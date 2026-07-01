@@ -1,0 +1,73 @@
+<header class="navbar">
+  <nav class="nav-inner" aria-label="Main navigation">
+    <a href="#portfolio">Portfolio</a>
+    <a href="#services">Services</a>
+    <a href="#faq">FAQ</a>
+
+    <a class="brand" href="/" aria-label="Lunemint home">
+      <img src="/images/logos/lunemint-text-logo.svg" alt="Lunemint" />
+    </a>
+
+    <a href="#about">About</a>
+    <a href="#shop">Shop</a>
+    <a href="#request">Request</a>
+  </nav>
+</header>
+
+<style>
+  .navbar {
+    background: #f7ffea;
+    border-bottom: 1px solid rgba(161, 115, 175, 0.35);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-inner {
+    height: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 1.35fr repeat(3, 1fr);
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .nav-inner a {
+    font-family: var(--font-body);
+    font-size: 14.3px;
+    font-weight: 700;
+    color: #a173af;
+    transition: color 180ms ease;
+  }
+
+  .brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .brand img {
+    width: 120px;
+    max-height: 34px;
+    object-fit: contain;
+  }
+
+  .nav-inner a:not(.brand):hover {
+    color: #290087;
+  }
+
+  @media (max-width: 720px) {
+    .nav-inner {
+      height: auto;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.45rem;
+      padding: 0.5rem;
+    }
+
+    .brand {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+  }
+</style>

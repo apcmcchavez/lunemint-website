@@ -1,0 +1,201 @@
+---
+const faqs = [
+  {
+    q: "How long does a project take?",
+    a: "Most simple graphics take a few days. Larger decks, templates, or patterned sets may take longer depending on the details.",
+  },
+  {
+    q: "How do I request a commission?",
+    a: "Prepare your idea, deadline, references, and preferred style. Then contact Lunemint so the project can be reviewed.",
+  },
+  {
+    q: "Do you make Canva graphics?",
+    a: "Yes. Lunemint can create Canva posters, pubmats, social graphics, presentation decks, and templates.",
+  },
+  {
+    q: "Can I request revisions?",
+    a: "Yes. Revisions can be discussed depending on the scope of the commission.",
+  },
+  {
+    q: "Do you accept rush projects?",
+    a: "Rush projects depend on availability and project complexity.",
+  },
+];
+---
+
+<section id="faq" class="faq-section">
+  <div class="faq-heading">
+    <p>FAQ</p>
+    <h2>Frequently Asked Questions</h2>
+    <span>Everything you need to know before placing an order</span>
+  </div>
+
+  <div class="faq-layout">
+    <div class="faq-list">
+      {
+        faqs.map((faq) => (
+          <details>
+            <summary>
+              <span>{faq.q}</span>
+              <b>+</b>
+            </summary>
+            <p>{faq.a}</p>
+          </details>
+        ))
+      }
+    </div>
+
+    <aside class="contact-card">
+      <h3>Still have questions?</h3>
+      <p>
+        Message me directly — I’m happy to help before you place your
+        commission.
+      </p>
+      <a href="#about">Contact Me</a>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    padding: 76px clamp(1rem, 5vw, 5rem) 88px;
+    background-color: #c9b8d5;
+    background-image:
+      linear-gradient(45deg, rgba(255, 255, 255, 0.32) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255, 255, 255, 0.32) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.32) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.32) 75%);
+    background-size: 260px 260px;
+    background-position:
+      0 0,
+      0 130px,
+      130px -130px,
+      -130px 0;
+  }
+
+  .faq-heading {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .faq-heading p,
+  .faq-heading span {
+    display: block;
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 14.9px;
+    text-transform: uppercase;
+    color: #8e36a1;
+  }
+
+  .faq-heading h2 {
+    margin: 8px 0 14px;
+    font-family: var(--font-sergio);
+    font-size: clamp(2.4rem, 5.5vw, 47.2px);
+    font-weight: 900;
+    line-height: 1;
+    color: #40098c;
+  }
+
+  .faq-layout {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 14px;
+  }
+
+  details {
+    background: #f7ffea;
+    box-shadow: 8px 8px 0 rgba(41, 0, 135, 0.16);
+  }
+
+  summary {
+    min-height: 56px;
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 22px;
+    font-family: var(--font-body);
+    font-size: 14.9px;
+    font-weight: 800;
+    color: #99acff;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary b {
+    display: grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background: #a330a5;
+    color: white;
+  }
+
+  details[open] summary b {
+    transform: rotate(45deg);
+  }
+
+  details p {
+    margin: 0;
+    padding: 0 22px 18px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.45;
+    color: #290087;
+  }
+
+  .contact-card {
+    min-height: 205px;
+    padding: 36px 30px;
+    background: #290087;
+    color: white;
+    text-align: center;
+    box-shadow: 10px 10px 0 rgba(41, 0, 135, 0.22);
+  }
+
+  .contact-card h3 {
+    margin: 0 0 16px;
+    font-family: var(--font-sergio);
+    font-size: 18px;
+    color: #f4ecc4;
+  }
+
+  .contact-card p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 13.9px;
+    line-height: 1.35;
+    color: #8e7cca;
+  }
+
+  .contact-card a {
+    display: inline-flex;
+    margin-top: 24px;
+    padding: 13px 28px;
+    background: #a330a5;
+    font-family: var(--font-body);
+    font-size: 13.9px;
+    font-weight: 800;
+    color: #f8faf0;
+  }
+
+  @media (max-width: 850px) {
+    .faq-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

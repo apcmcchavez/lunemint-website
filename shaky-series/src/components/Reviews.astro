@@ -1,0 +1,219 @@
+---
+const reviews = [
+  {
+    tag: "purple",
+    rotate: "-6deg",
+    x: "7%",
+    y: "12%",
+    quote: "The presentation deck felt polished, clear, and so easy to use.",
+    alias: "— M., student org",
+  },
+  {
+    tag: "blue",
+    rotate: "4deg",
+    x: "37%",
+    y: "20%",
+    quote:
+      "Everything came together beautifully and matched the vibe I wanted.",
+    alias: "— J., event host",
+  },
+  {
+    tag: "purple",
+    rotate: "-4deg",
+    x: "67%",
+    y: "13%",
+    quote: "The Canva pieces looked dreamy and professional right away.",
+    alias: "— R., small brand",
+  },
+  {
+    tag: "blue",
+    rotate: "5deg",
+    x: "12%",
+    y: "60%",
+    quote: "The process felt thoughtful and the final design was worth it.",
+    alias: "— A., client",
+  },
+  {
+    tag: "purple",
+    rotate: "-3deg",
+    x: "42%",
+    y: "67%",
+    quote: "It felt like my ideas finally had a clear visual voice.",
+    alias: "— K., freelancer",
+  },
+  {
+    tag: "blue",
+    rotate: "6deg",
+    x: "68%",
+    y: "58%",
+    quote: "The colors, layout, and details felt so intentional and cute.",
+    alias: "— T., presentation client",
+  },
+];
+---
+
+<section class="reviews">
+  <img
+    class="plaid-strip"
+    src="/images/patterns/plaid-flower-strip.png"
+    alt=""
+    aria-hidden="true"
+  />
+
+  <div class="reviews-paper">
+    <img
+      class="torn torn-top"
+      src="/images/reviews/customer-reviews-torn-paper-top.webp"
+      alt=""
+      aria-hidden="true"
+    />
+
+    <div class="reviews-content">
+      <div class="reviews-heading">
+        <p>Check what others say</p>
+        <h2>Customer Reviews</h2>
+      </div>
+
+      <div class="review-board">
+        <img
+          class="review-grid"
+          src="/images/reviews/customer-reviews-grid.png"
+          alt=""
+          aria-hidden="true"
+        />
+
+        {
+          reviews.map((review) => (
+            <article
+              class="review-tag"
+              style={`--x:${review.x}; --y:${review.y}; --rotate:${review.rotate}; --tag:url('/images/reviews/customer-review-tag-${review.tag}.svg');`}
+            >
+              <p>{review.quote}</p>
+              <strong>{review.alias}</strong>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <img
+      class="torn torn-bottom"
+      src="/images/reviews/customer-reviews-torn-paper-bottom.webp"
+      alt=""
+      aria-hidden="true"
+    />
+  </div>
+</section>
+
+<style>
+  .reviews {
+    background: #f8faf0;
+  }
+
+  .plaid-strip {
+    width: 100%;
+    height: 62px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .reviews-paper {
+    background-color: #efe3ca;
+    background-image: url("/images/reviews/crumpled-paper-bg.webp");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .torn {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .reviews-content {
+    padding: 30px 1rem 42px;
+  }
+
+  .reviews-heading {
+    text-align: center;
+    margin-bottom: 34px;
+  }
+
+  .reviews-heading p {
+    margin: 0 0 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #a330a5;
+  }
+
+  .reviews-heading h2 {
+    margin: 0;
+    font-family: var(--font-gladiola);
+    font-size: clamp(3rem, 7vw, 82px);
+    font-style: italic;
+    line-height: 0.95;
+    color: #290087;
+  }
+
+  .review-board {
+    width: min(1050px, 88%);
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .review-grid {
+    width: 100%;
+    height: auto;
+  }
+
+  .review-tag {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: clamp(205px, 20vw, 280px);
+    aspect-ratio: 2.05 / 1;
+    display: grid;
+    place-items: center;
+    padding: 1.15rem 1.35rem;
+    background-image: var(--tag);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transform: rotate(var(--rotate));
+    text-align: center;
+  }
+
+  .review-tag p {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-body);
+    font-size: clamp(0.72rem, 1vw, 14px);
+    line-height: 1.18;
+    font-style: italic;
+    color: #8e7cca;
+  }
+
+  .review-tag strong {
+    font-family: var(--font-body);
+    font-size: clamp(0.55rem, 0.8vw, 11px);
+    font-weight: 800;
+    color: #ffdc7e;
+  }
+
+  @media (max-width: 850px) {
+    .review-board {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .review-grid {
+      display: none;
+    }
+
+    .review-tag {
+      position: static;
+      width: min(310px, 92%);
+      margin: 0 auto;
+    }
+  }
+</style>

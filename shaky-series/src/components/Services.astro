@@ -1,0 +1,182 @@
+---
+const services = [
+  {
+    title: "Canva Graphics",
+    icon: "/images/icons/cursor-for-what-i-offer-canva.svg",
+    text: "Custom posters, pubmats, and social graphics for events, orgs, and everyday creative needs.",
+  },
+  {
+    title: "Presentations",
+    icon: "/images/icons/ppt-looking-for-what-i-offer-presentation.svg",
+    text: "Well-structured slide decks for class, orgs, and pitches — ready, clean, and presentation-ready.",
+    featured: true,
+  },
+  {
+    title: "Resume Templates",
+    icon: "/images/icons/document-for-what-i-offer-resume.svg",
+    text: "Professional, easy-to-edit templates created for polished and job-ready resumes.",
+  },
+  {
+    title: "Patterned Designs",
+    icon: "/images/icons/printer-for-what-i-offer-pattern-design-canva.svg",
+    text: "Reusable designs you can customize for prints, products, and digital use.",
+  },
+];
+---
+
+<section id="services" class="services">
+  <div class="services-card">
+    <p class="section-kicker">Services</p>
+    <h2>What I Offer</h2>
+
+    <div class="service-grid">
+      {
+        services.map((service) => (
+          <article class={`service-box ${service.featured ? "featured" : ""}`}>
+            <h3>
+              {service.title}
+              {service.featured && (
+                <img
+                  class="title-star"
+                  src="/images/icons/presentation-services-star.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              )}
+            </h3>
+
+            <img
+              class="service-icon"
+              src={service.icon}
+              alt=""
+              aria-hidden="true"
+            />
+            <p>{service.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: 88px 1.25rem 94px;
+    background-color: #a330a5;
+    background-image: url("/images/patterns/what-i-offer-bg.png");
+    background-size: 600px 600px;
+    background-repeat: repeat;
+    background-position: center;
+  }
+
+  .services-card {
+    width: min(1120px, 86%);
+    margin: 0 auto;
+    background: #f7ffea;
+    padding: 42px 46px 58px;
+    text-align: center;
+    box-shadow: 0 14px 0 rgba(41, 0, 135, 0.16);
+  }
+
+  .services-card h2 {
+    margin: 4px 0 46px;
+    font-family: var(--font-gladiola);
+    font-size: 50.2px;
+    font-style: italic;
+    font-weight: 800;
+    color: #290087;
+    line-height: 1;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 2px solid #290087;
+  }
+
+  .service-box {
+    min-height: 250px;
+    padding: 22px 24px 24px;
+    border-right: 2px solid #290087;
+    background: #f7ffea;
+    color: #290087;
+  }
+
+  .service-box:last-child {
+    border-right: 0;
+  }
+
+  .service-box.featured {
+    background: #290087;
+    color: #f4ecc4;
+  }
+
+  .service-box h3 {
+    min-height: 34px;
+    margin: 0 0 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-size: 13.6px;
+    font-weight: 800;
+    color: currentColor;
+  }
+
+  .title-star {
+    width: 13px;
+    height: 13px;
+  }
+
+  .service-icon {
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+    margin: 0 auto 22px;
+  }
+
+  .service-box p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.18;
+    color: currentColor;
+  }
+
+  @media (max-width: 900px) {
+    .services-card {
+      width: 92%;
+      padding: 34px 24px 44px;
+    }
+
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-box:nth-child(2) {
+      border-right: 0;
+    }
+
+    .service-box:nth-child(1),
+    .service-box:nth-child(2) {
+      border-bottom: 2px solid #290087;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-box {
+      border-right: 0;
+      border-bottom: 2px solid #290087;
+    }
+
+    .service-box:last-child {
+      border-bottom: 0;
+    }
+  }
+</style>

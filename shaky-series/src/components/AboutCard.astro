@@ -1,0 +1,220 @@
+<section id="about" class="about-section">
+  <article class="about-card">
+    <div class="about-left">
+      <p class="about-label">/ about me</p>
+
+      <img
+        class="artist-pic"
+        src="/images/raw_pictures/artist-pic.png"
+        alt="Lunemint artist"
+      />
+
+      <img
+        class="barcode"
+        src="/images/about/barcode-for-the-about-me-card.svg"
+        alt=""
+        aria-hidden="true"
+      />
+    </div>
+
+    <div class="about-main">
+      <h2>lunemint</h2>
+      <p class="credential">artist credentials</p>
+
+      <img
+        class="design-line"
+        src="/images/about/design-line-in-the-about-me-card.svg"
+        alt=""
+        aria-hidden="true"
+      />
+
+      <h3>BIO</h3>
+      <p class="bio-text">
+        A BS Computer Science student with a passion for design and creativity.
+        I create visuals that help students, organizations, and businesses
+        communicate their ideas effectively. Whether it’s a Canva graphic, a
+        polished presentation, a standout resume, or a specific design, I put
+        care and intention into every project.
+      </p>
+
+      <div class="social-row">
+        <img
+          src="/images/icons/instagram-logo-about-me-card.svg"
+          alt="Instagram"
+        />
+        <img
+          src="/images/icons/raketph-logo-about-me-card.svg"
+          alt="Raket.ph"
+        />
+        <img src="/images/icons/gumroad-logo-about-me-card.svg" alt="Gumroad" />
+        <img src="/images/icons/etsy-logo-about-me-card.svg" alt="Etsy" />
+        <img
+          src="/images/icons/printify-logo-about-me-card.svg"
+          alt="Printify"
+        />
+      </div>
+    </div>
+
+    <img
+      class="about-logo"
+      src="/images/logos/lunemint-scalloped-logo.svg"
+      alt=""
+      aria-hidden="true"
+    />
+
+    <img
+      class="sparkles"
+      src="/images/about/cluster-star-for-the-about-me-card.svg"
+      alt=""
+      aria-hidden="true"
+    />
+  </article>
+</section>
+
+<style>
+  .about-section {
+    padding: 84px 1rem 96px;
+    background-color: #a879bb;
+    background-image: url("/images/about/about-me-stars-bg.png");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .about-card {
+    width: min(1130px, 90%);
+    min-height: 560px;
+    margin: 0 auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: 335px 1fr;
+    gap: 56px;
+    background: #f7ffea;
+    border-radius: 26px;
+    padding: 42px 72px 48px 42px;
+    box-shadow: 14px 14px 0 #24142f;
+  }
+
+  .about-label {
+    margin: 0 0 16px;
+    font-family: var(--font-gladiola);
+    font-size: 18.6px;
+    font-style: italic;
+    font-weight: 800;
+    color: #a230a4;
+  }
+
+  .artist-pic {
+    width: 298.2px;
+    height: 391.7px;
+    object-fit: cover;
+    border: 12px solid #f4ecc4;
+  }
+
+  .barcode {
+    width: 145.1px;
+    height: 63.8px;
+    object-fit: contain;
+    margin: 24px auto 0;
+  }
+
+  .about-main {
+    padding-top: 35px;
+    padding-right: 155px;
+  }
+
+  .about-main h2 {
+    margin: 0;
+    font-family: var(--font-sergio);
+    font-size: clamp(4rem, 6vw, 64.9px);
+    font-weight: 900;
+    line-height: 0.82;
+    color: #32148a;
+  }
+
+  .credential {
+    margin: 4px 0 18px;
+    font-family: var(--font-gladiola);
+    font-size: clamp(2.2rem, 4vw, 43.4px);
+    font-style: italic;
+    font-weight: 800;
+    line-height: 0.9;
+    color: #cbc5e5;
+  }
+
+  .design-line {
+    width: 428.7px;
+    height: 32px;
+    object-fit: contain;
+    object-position: left;
+    margin-bottom: 22px;
+  }
+
+  .about-main h3 {
+    margin: 0 0 12px;
+    font-family: var(--font-sergio);
+    font-size: 32.7px;
+    font-weight: 900;
+    color: #a173af;
+  }
+
+  .bio-text {
+    max-width: 610px;
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16.2px;
+    line-height: 1.32;
+    color: #290187;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .social-row img {
+    width: 66.1px;
+    height: 65.2px;
+    object-fit: contain;
+  }
+
+  .about-logo {
+    position: absolute;
+    top: 46px;
+    right: 70px;
+    width: 186px;
+    height: 186px;
+  }
+
+  .sparkles {
+    position: absolute;
+    right: 72px;
+    bottom: 62px;
+    width: 182.9px;
+    height: 274.1px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 1020px) {
+    .about-card {
+      grid-template-columns: 1fr;
+      padding: 34px;
+    }
+
+    .about-main {
+      padding: 0;
+    }
+
+    .about-logo {
+      position: static;
+      width: 130px;
+      height: 130px;
+      justify-self: end;
+      order: -1;
+    }
+
+    .sparkles {
+      opacity: 0.35;
+    }
+  }
+</style>

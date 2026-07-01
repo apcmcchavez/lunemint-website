@@ -1,0 +1,155 @@
+<section id="request" class="commission-cta">
+  <p class="section-kicker">Let’s work together</p>
+  <h2>Ready to start your Commission?</h2>
+  <p>Click that button if you’re ready for some lunemint action!~</p>
+  <button class="lunemint-button" id="open-commission" type="button">
+    Request a Commission ✦
+  </button>
+</section>
+
+<dialog class="commission-modal" id="commission-modal">
+  <form method="dialog" class="modal-card">
+    <button class="close-button" value="close" aria-label="Close form">×</button
+    >
+
+    <h3>Commission Request</h3>
+    <p>
+      Form layout placeholder. We’ll replace this once you send the form sample.
+    </p>
+
+    <label>
+      Name
+      <input type="text" placeholder="Your name" />
+    </label>
+
+    <label>
+      Project type
+      <input
+        type="text"
+        placeholder="Presentation, Canva graphic, resume, etc."
+      />
+    </label>
+
+    <label>
+      Notes
+      <textarea placeholder="Tell me about your idea"></textarea>
+    </label>
+
+    <button class="lunemint-button" type="submit">Submit Request ✦</button>
+  </form>
+</dialog>
+
+<script>
+  const openButton = document.querySelector("#open-commission");
+  const modal = document.querySelector("#commission-modal");
+
+  openButton?.addEventListener("click", () => {
+    if (modal instanceof HTMLDialogElement) {
+      document.body.classList.add("modal-open");
+      modal.showModal();
+    }
+  });
+
+  modal?.addEventListener("close", () => {
+    document.body.classList.remove("modal-open");
+  });
+</script>
+
+<style>
+  .commission-cta {
+    text-align: center;
+    padding: 52px 1rem 58px;
+    background-color: #f7ffea;
+    background-image: linear-gradient(
+      rgba(142, 124, 202, 0.28) 1px,
+      transparent 1px
+    );
+    background-size: 100% 23px;
+    border-top: 1px solid #cad7bd;
+    border-bottom: 1px solid #cad7bd;
+  }
+
+  .commission-cta h2 {
+    margin: 11px 0 10px;
+    font-family: var(--font-sergio);
+    font-size: clamp(2rem, 4.4vw, 40.5px);
+    font-weight: 900;
+    color: #a330a5;
+    line-height: 1.05;
+  }
+
+  .commission-cta p:not(.section-kicker) {
+    margin: 0 0 18px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: #29018a;
+  }
+
+  .commission-modal {
+    width: min(560px, 92vw);
+    border: 0;
+    border-radius: 22px;
+    padding: 0;
+    background: transparent;
+  }
+
+  .commission-modal::backdrop {
+    background: rgba(41, 0, 135, 0.42);
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-card {
+    position: relative;
+    display: grid;
+    gap: 0.85rem;
+    padding: 2rem;
+    background: #f7ffea;
+    border: 3px solid #290087;
+    box-shadow: 10px 10px 0 #290087;
+    color: #290087;
+  }
+
+  .modal-card h3 {
+    margin: 0;
+    font-family: var(--font-sergio);
+    font-size: 2rem;
+    color: #a330a5;
+  }
+
+  .modal-card p {
+    margin: 0 0 0.5rem;
+  }
+
+  .modal-card label {
+    display: grid;
+    gap: 0.35rem;
+    font-weight: 800;
+  }
+
+  .modal-card input,
+  .modal-card textarea {
+    width: 100%;
+    border: 2px solid #c8c6e6;
+    border-radius: 10px;
+    padding: 0.75rem;
+    background: white;
+  }
+
+  .modal-card textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    border: 0;
+    background: transparent;
+    color: #a330a5;
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+  }
+</style>

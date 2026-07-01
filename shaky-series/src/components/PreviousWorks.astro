@@ -1,0 +1,204 @@
+---
+const works = [
+  {
+    title: "Digital Pubmats",
+    description:
+      "Flyer, posters, IG carousels, event templates, and promo graphics.",
+    link: "#",
+    image: "/images/hero/stars-hero-bg.webp",
+  },
+  {
+    title: "Pastel Palette",
+    description:
+      "Moodboards, graphics, and creative visual sets for dreamy vibes.",
+    link: "#",
+    image: "/images/patterns/what-i-offer-bg.png",
+  },
+  {
+    title: "Mini Template",
+    description: "Canva templates for school, orgs, and small brands.",
+    link: "#",
+    image: "/images/about/about-me-stars-bg.png",
+  },
+  {
+    title: "Presentation Decks",
+    description: "Clean, polished decks and slide layouts for school and work.",
+    link: "#",
+    image: "/images/hero/watercolor-mountains-hero-bg.webp",
+  },
+  {
+    title: "Resume Templates",
+    description: "Polished resumes with a soft, modern visual identity.",
+    link: "#",
+    image: "/images/reviews/customer-reviews-grid.png",
+  },
+  {
+    title: "Patterned Designs",
+    description: "Reusable patterns and graphics for print and digital pieces.",
+    link: "#",
+    image: "/images/patterns/plaid-flower-strip.png",
+  },
+];
+---
+
+<section id="portfolio" class="previous-works">
+  <img
+    class="top-strip"
+    src="/images/patterns/plaid-flower-strip.png"
+    alt=""
+    aria-hidden="true"
+  />
+
+  <div class="works-inner">
+    <img
+      class="works-title"
+      src="/images/portfolio/previous-works-title.svg"
+      alt="Previous Works"
+    />
+
+    <div class="polaroid-scroller" aria-label="Previous works carousel">
+      {
+        works.map((work, index) => (
+          <article class={`polaroid tilt-${(index % 4) + 1}`}>
+            <div class="polaroid-art">
+              <img src={work.image} alt={work.title} />
+              <div class="polaroid-overlay" />
+            </div>
+
+            <div class="polaroid-text">
+              <h3>{work.title}</h3>
+              <p>{work.description}</p>
+              <a href={work.link} target="_blank" rel="noreferrer">
+                See works →
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .previous-works {
+    background-color: #773db2;
+    background-image: url("/images/patterns/purple-gridlines-bg.webp");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .top-strip {
+    width: 100%;
+    height: 52px;
+    object-fit: cover;
+    object-position: center;
+    border-top: 1px solid #d8d5ff;
+    border-bottom: 1px solid #d8d5ff;
+  }
+
+  .works-inner {
+    padding: 64px 0 86px;
+  }
+
+  .works-title {
+    width: min(790px, 78%);
+    margin: 0 auto 58px;
+  }
+
+  .polaroid-scroller {
+    display: flex;
+    gap: 38px;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x proximity;
+    padding: 16px max(48px, calc((100% - 1160px) / 2)) 34px;
+  }
+
+  .polaroid-scroller::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  .polaroid-scroller::-webkit-scrollbar-thumb {
+    background: #a330a5;
+    border-radius: 999px;
+  }
+
+  .polaroid {
+    flex: 0 0 281.3px;
+    width: 281.3px;
+    min-height: 410px;
+    scroll-snap-align: start;
+    background: white;
+    padding: 14px 14px 18px;
+    box-shadow: 0 10px 0 rgba(41, 0, 135, 0.42);
+  }
+
+  .tilt-1 {
+    transform: rotate(-3deg);
+  }
+
+  .tilt-2 {
+    transform: rotate(2deg) translateY(-12px);
+  }
+
+  .tilt-3 {
+    transform: rotate(-2deg);
+  }
+
+  .tilt-4 {
+    transform: rotate(4deg);
+  }
+
+  .polaroid-art {
+    width: 100%;
+    height: 275.6px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#c7efff, #eefcff);
+  }
+
+  .polaroid-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .polaroid-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(0, 0, 0, 0.12) 100%
+    );
+  }
+
+  .polaroid-text {
+    padding-top: 12px;
+  }
+
+  .polaroid-text h3 {
+    margin: 0;
+    font-family: var(--font-playlist);
+    font-size: 22.9px;
+    font-style: italic;
+    color: #40098c;
+    line-height: 1;
+  }
+
+  .polaroid-text p {
+    margin: 7px 0;
+    max-width: 210px;
+    font-family: var(--font-body);
+    font-size: 8.4px;
+    line-height: 1.35;
+    color: #291750;
+  }
+
+  .polaroid-text a {
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 700;
+    color: #a330a5;
+  }
+</style>

@@ -1,0 +1,76 @@
+<div class="notice-bar" aria-label="Commission notice">
+  <div class="notice-track">
+    <div class="notice-group">
+      <span>NOW ACCEPTING COMMISSIONS</span>
+      <img src="/images/icons/star-notif-bar.svg" alt="" />
+      <span>NOW ACCEPTING COMMISSIONS</span>
+      <img src="/images/icons/star-notif-bar.svg" alt="" />
+      <span>NOW ACCEPTING COMMISSIONS</span>
+      <img src="/images/icons/star-notif-bar.svg" alt="" />
+      <span>NOW ACCEPTING COMMISSIONS</span>
+      <img src="/images/icons/star-notif-bar.svg" alt="" />
+    </div>
+
+    <div class="notice-group" aria-hidden="true">
+      <span>NOW ACCEPTING COMMISSIONS</span>
+      <img src="/images/icons/star-notif-bar.svg" alt="" />
+      <span>NOW ACCEPTING COMMISSIONS</span>
+      <img src="/images/icons/star-notif-bar.svg" alt="" />
+      <span>NOW ACCEPTING COMMISSIONS</span>
+      <img src="/images/icons/star-notif-bar.svg" alt="" />
+      <span>NOW ACCEPTING COMMISSIONS</span>
+      <img src="/images/icons/star-notif-bar.svg" alt="" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .notice-bar {
+    height: 28px;
+    background: linear-gradient(90deg, #8e36a1 0%, #a330a5 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(248, 250, 240, 0.16);
+  }
+
+  .notice-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 20s linear infinite;
+  }
+
+  .notice-group {
+    display: flex;
+    align-items: center;
+    gap: 0.72rem;
+    padding: 0 0.95rem 0 0.5rem;
+    white-space: nowrap;
+  }
+
+  .notice-group span {
+    font-family: var(--font-body);
+    font-size: 10.4px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c8c6e6;
+  }
+
+  .notice-group img {
+    width: 13px;
+    height: 13px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 4px rgba(255, 220, 126, 0.4));
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>
