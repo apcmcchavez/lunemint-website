@@ -49,14 +49,14 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--deep-purple);
+  background: var(--cream);
 }
 
 body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--ink);
-  background: var(--deep-purple);
+  background: var(--cream);
   overflow-x: hidden;
 }
 
@@ -81,15 +81,23 @@ select {
   width: 100%;
   margin: 0;
   overflow-x: hidden;
-  background: var(--deep-purple);
+  background: var(--cream);
   min-height: 100vh;
 }
 
 .site-inner {
-  width: min(100%, 1440px);
-  margin: 0 auto;
-  overflow: hidden;
-  background: #f7efff;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  padding: 0;
+}
+
+/* utility to nudge large sections to visually match the mock */
+.site-inner--padded {
+  padding-left: 48px;
+  padding-right: 48px;
 }
 
 .section-kicker {

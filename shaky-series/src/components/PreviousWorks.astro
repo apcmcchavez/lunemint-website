@@ -38,6 +38,27 @@ const works = [
     link: "#",
     image: "/images/patterns/plaid-flower-strip.png",
   },
+  {
+    title: "Birthday Collage",
+    description:
+      "Custom theme collages for gifts, socials, and personal projects.",
+    link: "#",
+    image: "/images/patterns/purple-gridlines-bg.webp",
+  },
+  {
+    title: "Study Planner",
+    description:
+      "Organized planner templates for students who want cute productivity.",
+    link: "#",
+    image: "/images/patterns/what-i-offer-bg.png",
+  },
+  {
+    title: "Workshop Poster",
+    description:
+      "Eye-catching posters designed for school events and creative workshops.",
+    link: "#",
+    image: "/images/about/about-me-stars-bg.png",
+  },
 ];
 ---
 
@@ -56,31 +77,41 @@ const works = [
       alt="Previous Works"
     />
 
-    <div class="polaroid-scroller" aria-label="Previous works carousel">
-      {
-        works.map((work, index) => (
-          <article class={`polaroid tilt-${(index % 4) + 1}`}>
-            <div class="polaroid-art">
-              <img src={work.image} alt={work.title} />
-              <div class="polaroid-overlay" />
-            </div>
+    <div class="container-fluid">
+      <div class="horiz-gallery-wrapper" aria-label="Previous works carousel">
+        <div class="horiz-gallery-strip">
+          {
+            works.map((work, index) => (
+              <article class={`project-wrap polaroid tilt-${(index % 4) + 1}`}>
+                <div class="polaroid-art">
+                  <img src={work.image} alt={work.title} />
+                  <div class="polaroid-overlay" />
+                </div>
 
-            <div class="polaroid-text">
-              <h3>{work.title}</h3>
-              <p>{work.description}</p>
-              <a href={work.link} target="_blank" rel="noreferrer">
-                See works →
-              </a>
-            </div>
-          </article>
-        ))
-      }
+                <div class="polaroid-text">
+                  <h3>{work.title}</h3>
+                  <p>{work.description}</p>
+                  <a href={work.link} target="_blank" rel="noreferrer">
+                    See works →
+                  </a>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
+  :global(body) {
+    overflow-x: hidden;
+  }
+
   .previous-works {
+    position: relative;
+    overflow: visible;
     background-color: #773db2;
     background-image: url("/images/patterns/purple-gridlines-bg.webp");
     background-size: cover;
@@ -89,48 +120,62 @@ const works = [
 
   .top-strip {
     width: 100%;
-    height: 52px;
+    height: 72px;
     object-fit: cover;
     object-position: center;
+    display: block;
     border-top: 1px solid #d8d5ff;
     border-bottom: 1px solid #d8d5ff;
+    box-shadow: inset 0 6px 0 rgba(255, 255, 255, 0.03);
   }
 
   .works-inner {
-    padding: 64px 0 86px;
+    padding: 80px 0 100px;
+    overflow: visible;
   }
 
   .works-title {
-    width: min(790px, 78%);
-    margin: 0 auto 58px;
+    display: block;
+    width: min(980px, 88%);
+    margin: 0 auto 48px;
+    max-width: 1100px;
   }
 
-  .polaroid-scroller {
+  .container-fluid {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .horiz-gallery-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: visible;
+  }
+
+  .horiz-gallery-strip {
     display: flex;
-    gap: 38px;
-    overflow-x: auto;
-    overflow-y: visible;
-    scroll-snap-type: x proximity;
-    padding: 16px max(48px, calc((100% - 1160px) / 2)) 34px;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 44px;
+    width: max-content;
+    padding: 28px max(48px, calc((100vw - 1280px) / 2)) 58px;
+    will-change: transform;
   }
 
-  .polaroid-scroller::-webkit-scrollbar {
-    height: 10px;
-  }
-
-  .polaroid-scroller::-webkit-scrollbar-thumb {
-    background: #a330a5;
-    border-radius: 999px;
+  .project-wrap {
+    flex: 0 0 340px;
+    width: 340px;
+    box-sizing: border-box;
   }
 
   .polaroid {
-    flex: 0 0 281.3px;
-    width: 281.3px;
-    min-height: 410px;
-    scroll-snap-align: start;
+    min-height: 480px;
     background: white;
-    padding: 14px 14px 18px;
-    box-shadow: 0 10px 0 rgba(41, 0, 135, 0.42);
+    padding: 18px 18px 22px;
+    box-shadow: 0 12px 0 rgba(41, 0, 135, 0.42);
+    scroll-snap-align: start;
   }
 
   .tilt-1 {
@@ -151,7 +196,7 @@ const works = [
 
   .polaroid-art {
     width: 100%;
-    height: 275.6px;
+    height: 340px;
     position: relative;
     overflow: hidden;
     background: linear-gradient(#c7efff, #eefcff);
@@ -161,6 +206,7 @@ const works = [
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
 
   .polaroid-overlay {
@@ -180,25 +226,131 @@ const works = [
   .polaroid-text h3 {
     margin: 0;
     font-family: var(--font-playlist);
-    font-size: 22.9px;
+    font-size: 28px;
     font-style: italic;
     color: #40098c;
     line-height: 1;
   }
 
   .polaroid-text p {
-    margin: 7px 0;
-    max-width: 210px;
+    margin: 10px 0;
+    max-width: 260px;
     font-family: var(--font-body);
-    font-size: 8.4px;
-    line-height: 1.35;
+    font-size: 13px;
+    line-height: 1.4;
     color: #291750;
   }
 
   .polaroid-text a {
     font-family: var(--font-body);
-    font-size: 9px;
+    font-size: 13px;
     font-weight: 700;
     color: #a330a5;
   }
+
+  @media (max-width: 850px) {
+    .works-inner {
+      padding: 64px 0 80px;
+    }
+
+    .works-title {
+      margin-bottom: 32px;
+    }
+
+    .horiz-gallery-wrapper {
+      overflow-x: auto;
+      overflow-y: visible;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .horiz-gallery-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .horiz-gallery-strip {
+      gap: 28px;
+      padding: 24px 28px 48px;
+      scroll-snap-type: x proximity;
+    }
+
+    .project-wrap {
+      flex-basis: 280px;
+      width: 280px;
+    }
+
+    .polaroid {
+      min-height: 410px;
+    }
+
+    .polaroid-art {
+      height: 280px;
+    }
+  }
 </style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  (() => {
+    const wrapper = document.querySelector<HTMLElement>(
+      ".previous-works .horiz-gallery-wrapper",
+    );
+
+    const strip =
+      wrapper?.querySelector<HTMLElement>(".horiz-gallery-strip") ?? null;
+
+    if (!wrapper || !strip) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 851px)", () => {
+      const getScrollDistance = () =>
+        Math.max(0, strip.scrollWidth - wrapper.clientWidth);
+
+      const tween = gsap.to(strip, {
+        x: () => -getScrollDistance(),
+        ease: "none",
+        paused: true,
+      });
+
+      const trigger = ScrollTrigger.create({
+        trigger: wrapper,
+        start: "center center",
+        end: () => `+=${strip.scrollWidth}`,
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        animation: tween,
+      });
+
+      if (document.readyState === "complete") {
+        ScrollTrigger.refresh();
+      } else {
+        window.addEventListener(
+          "load",
+          () => {
+            ScrollTrigger.refresh();
+          },
+          { once: true },
+        );
+      }
+
+      return () => {
+        trigger.kill();
+        tween.kill();
+        gsap.set(strip, { clearProps: "transform" });
+      };
+    });
+  })();
+</script>

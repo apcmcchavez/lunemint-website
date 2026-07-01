@@ -26,51 +26,83 @@
 
 <style>
   .notice-bar {
-    height: 28px;
-    background: linear-gradient(90deg, #8e36a1 0%, #a330a5 100%);
+    background: var(--main-purple);
+    color: var(--cream);
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid rgba(248, 250, 240, 0.16);
+    white-space: nowrap;
+    padding: 8px 0;
+    position: relative;
+    z-index: 100;
   }
 
   .notice-track {
-    display: flex;
+    display: inline-flex;
+    gap: 0;
     width: max-content;
-    animation: marquee 20s linear infinite;
+    animation: marquee 22s linear infinite;
   }
 
   .notice-group {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.72rem;
-    padding: 0 0.95rem 0 0.5rem;
-    white-space: nowrap;
-  }
-
-  .notice-group span {
+    gap: 12px;
+    padding: 0 40px;
     font-family: var(--font-body);
-    font-size: 10.4px;
-    font-weight: 800;
+    font-size: 11px;
+    font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #c8c6e6;
+    color: var(--cream);
   }
 
-  .notice-group img {
-    width: 13px;
-    height: 13px;
+  .notice-group img,
+  .notice-group .star {
+    color: var(--yellow);
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
     object-fit: contain;
-    filter: drop-shadow(0 0 4px rgba(255, 220, 126, 0.4));
   }
 
   @keyframes marquee {
-    from {
+    0% {
       transform: translateX(0);
     }
-
-    to {
+    100% {
       transform: translateX(-50%);
     }
   }
 </style>
+
+<script>
+  (() => {
+    const track = document.querySelector<HTMLElement>(".notice-track");
+    const container = track?.parentElement as HTMLElement | null;
+
+    if (!track || !container) return;
+
+    const safeTrack = track;
+    const safeContainer = container;
+    const originalHTML = safeTrack.innerHTML;
+
+    function duplicateUntilWide() {
+      safeTrack.innerHTML = originalHTML;
+
+      let safety = 0;
+
+      while (
+        safeTrack.scrollWidth < safeContainer.clientWidth * 2 &&
+        safety < 12
+      ) {
+        safeTrack.insertAdjacentHTML("beforeend", originalHTML);
+        safety++;
+      }
+    }
+
+    window.setTimeout(duplicateUntilWide, 50);
+
+    window.addEventListener("resize", () => {
+      window.setTimeout(duplicateUntilWide, 120);
+    });
+  })();
+</script>

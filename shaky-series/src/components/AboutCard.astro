@@ -81,16 +81,16 @@
   }
 
   .about-card {
-    width: min(1130px, 90%);
-    min-height: 560px;
+    width: min(1240px, 96%);
+    min-height: 620px;
     margin: 0 auto;
     position: relative;
     display: grid;
-    grid-template-columns: 335px 1fr;
+    grid-template-columns: 360px 1fr;
     gap: 56px;
     background: #f7ffea;
     border-radius: 26px;
-    padding: 42px 72px 48px 42px;
+    padding: 48px 86px 56px 48px;
     box-shadow: 14px 14px 0 #24142f;
   }
 
@@ -111,15 +111,15 @@
   }
 
   .barcode {
-    width: 145.1px;
-    height: 63.8px;
+    width: 190px;
+    height: auto;
     object-fit: contain;
     margin: 24px auto 0;
   }
 
   .about-main {
-    padding-top: 35px;
-    padding-right: 155px;
+    padding-top: 12px;
+    padding-right: 72px;
   }
 
   .about-main h2 {
@@ -132,7 +132,7 @@
   }
 
   .credential {
-    margin: 4px 0 18px;
+    margin: 4px 0 10px;
     font-family: var(--font-gladiola);
     font-size: clamp(2.2rem, 4vw, 43.4px);
     font-style: italic;
@@ -142,15 +142,15 @@
   }
 
   .design-line {
-    width: 428.7px;
-    height: 32px;
+    width: 520px;
+    height: auto;
     object-fit: contain;
     object-position: left;
-    margin-bottom: 22px;
+    margin: 0 0 18px;
   }
 
   .about-main h3 {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     font-family: var(--font-sergio);
     font-size: 32.7px;
     font-weight: 900;
@@ -168,30 +168,39 @@
 
   .social-row {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     margin-top: 24px;
+    flex-wrap: wrap;
   }
 
   .social-row img {
-    width: 66.1px;
-    height: 65.2px;
+    width: 72px;
+    height: 72px;
     object-fit: contain;
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .social-row img:hover {
+    transform: scale(0.92);
+    box-shadow: 0 0 0 4px rgba(41, 0, 135, 0.35);
   }
 
   .about-logo {
     position: absolute;
-    top: 46px;
-    right: 70px;
-    width: 186px;
-    height: 186px;
+    top: 24px;
+    right: 28px;
+    width: 206px;
+    height: 206px;
   }
 
   .sparkles {
     position: absolute;
-    right: 72px;
-    bottom: 62px;
-    width: 182.9px;
-    height: 274.1px;
+    right: 36px;
+    bottom: 38px;
+    width: 210px;
+    height: auto;
     object-fit: contain;
   }
 

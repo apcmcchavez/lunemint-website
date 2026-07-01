@@ -1,65 +1,121 @@
 ---
-const reviews = [
-  {
-    tag: "purple",
-    rotate: "-6deg",
-    x: "7%",
-    y: "12%",
-    quote: "The presentation deck felt polished, clear, and so easy to use.",
-    alias: "— M., student org",
-  },
-  {
-    tag: "blue",
-    rotate: "4deg",
-    x: "37%",
-    y: "20%",
-    quote:
-      "Everything came together beautifully and matched the vibe I wanted.",
-    alias: "— J., event host",
-  },
-  {
-    tag: "purple",
-    rotate: "-4deg",
-    x: "67%",
-    y: "13%",
-    quote: "The Canva pieces looked dreamy and professional right away.",
-    alias: "— R., small brand",
-  },
-  {
-    tag: "blue",
-    rotate: "5deg",
-    x: "12%",
-    y: "60%",
-    quote: "The process felt thoughtful and the final design was worth it.",
-    alias: "— A., client",
-  },
-  {
-    tag: "purple",
-    rotate: "-3deg",
-    x: "42%",
-    y: "67%",
-    quote: "It felt like my ideas finally had a clear visual voice.",
-    alias: "— K., freelancer",
-  },
-  {
-    tag: "blue",
-    rotate: "6deg",
-    x: "68%",
-    y: "58%",
-    quote: "The colors, layout, and details felt so intentional and cute.",
-    alias: "— T., presentation client",
-  },
+const reviewSets = [
+  [
+    {
+      tag: "blue",
+      rotate: -7,
+      x: "6%",
+      y: "16%",
+      quote:
+        "Lunemint helped my school project look so polished. I loved the bright style and fast turnaround.",
+      alias: "— Maya, presentation client",
+    },
+    {
+      tag: "purple",
+      rotate: -8,
+      x: "34%",
+      y: "24%",
+      quote:
+        "The brand cards are chic and easy to edit. Every slide felt custom and full of personality.",
+      alias: "— Asha, social media client",
+    },
+    {
+      tag: "blue",
+      rotate: 8,
+      x: "72%",
+      y: "20%",
+      quote:
+        "I got a lovely stack of graphics that match my page. The final result was cleaner than expected.",
+      alias: "— Ren, business client",
+    },
+    {
+      tag: "purple",
+      rotate: 10,
+      x: "10%",
+      y: "62%",
+      quote:
+        "My presentation felt professional and fun. The design made the content really pop.",
+      alias: "— Toni, pitch deck client",
+    },
+    {
+      tag: "blue",
+      rotate: 7,
+      x: "44%",
+      y: "68%",
+      quote:
+        "They delivered a beautiful patterned set with strong color and layout balance.",
+      alias: "— Sia, branding client",
+    },
+    {
+      tag: "purple",
+      rotate: -10,
+      x: "76%",
+      y: "62%",
+      quote:
+        "The resume template was crisp and easy to customize. It really stood out to recruiters.",
+      alias: "— Jay, career client",
+    },
+  ],
+  [
+    {
+      tag: "purple",
+      rotate: -6,
+      x: "6%",
+      y: "18%",
+      quote:
+        "The content felt polished and the layout was exactly what my project needed.",
+      alias: "— Zara, creative client",
+    },
+    {
+      tag: "blue",
+      rotate: -9,
+      x: "34%",
+      y: "26%",
+      quote:
+        "I loved how easy the templates were to personalize, and the colors were so eye-catching.",
+      alias: "— Nia, event client",
+    },
+    {
+      tag: "purple",
+      rotate: 9,
+      x: "72%",
+      y: "18%",
+      quote:
+        "The new look made my brand feel cohesive and stylish. It was exactly what I wanted.",
+      alias: "— Kira, brand client",
+    },
+    {
+      tag: "blue",
+      rotate: 10,
+      x: "12%",
+      y: "58%",
+      quote:
+        "The designs were creative and easy to use. I got lots of compliments from my team.",
+      alias: "— Sam, digital client",
+    },
+    {
+      tag: "purple",
+      rotate: 6,
+      x: "44%",
+      y: "66%",
+      quote:
+        "The final graphics felt custom and professional without overcomplicating things.",
+      alias: "— Emi, marketing client",
+    },
+    {
+      tag: "blue",
+      rotate: -8,
+      x: "76%",
+      y: "60%",
+      quote:
+        "My presentation looked polished and modern — the whole deck came together beautifully.",
+      alias: "— Liv, startup client",
+    },
+  ],
 ];
 ---
 
 <section class="reviews">
-  <img
-    class="plaid-strip"
-    src="/images/patterns/plaid-flower-strip.png"
-    alt=""
-    aria-hidden="true"
-  />
-
   <div class="reviews-paper">
     <img
       class="torn torn-top"
@@ -83,14 +139,28 @@ const reviews = [
         />
 
         {
-          reviews.map((review) => (
-            <article
-              class="review-tag"
-              style={`--x:${review.x}; --y:${review.y}; --rotate:${review.rotate}; --tag:url('/images/reviews/customer-review-tag-${review.tag}.svg');`}
-            >
-              <p>{review.quote}</p>
-              <strong>{review.alias}</strong>
-            </article>
+          reviewSets.map((set, setIndex) => (
+            <div class={`review-set ${setIndex === 0 ? "active" : "inactive"}`}>
+              {set.map((review) => (
+                <article
+                  class="review-tag"
+                  style={`--x:${review.x}; --y:${review.y}; --base-rotate:${review.rotate}deg; --random-rotate:0deg; --tag:url('/images/reviews/customer-review-tag-${review.tag}.svg');`}
+                >
+                  <div class="review-copy">
+                    <p>{review.quote}</p>
+                    <strong>{review.alias}</strong>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="review-dots" aria-hidden="true">
+        {
+          reviewSets.map((_, setIndex) => (
+            <span class={`review-dot ${setIndex === 0 ? "active" : ""}`} />
           ))
         }
       </div>
@@ -108,13 +178,8 @@ const reviews = [
 <style>
   .reviews {
     background: #f8faf0;
-  }
-
-  .plaid-strip {
-    width: 100%;
-    height: 62px;
-    object-fit: cover;
-    object-position: center;
+    overflow: visible;
+    position: relative;
   }
 
   .reviews-paper {
@@ -122,27 +187,45 @@ const reviews = [
     background-image: url("/images/reviews/crumpled-paper-bg.webp");
     background-size: cover;
     background-position: center;
+    position: relative;
+    overflow: visible;
+    padding-top: 120px;
+    padding-bottom: 150px;
   }
 
   .torn {
     width: 100%;
     height: auto;
     display: block;
+    position: absolute;
+    left: 0;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .torn.torn-top {
+    top: -58px;
+  }
+
+  .torn.torn-bottom {
+    bottom: -58px;
   }
 
   .reviews-content {
-    padding: 30px 1rem 42px;
+    position: relative;
+    z-index: 2;
+    padding: 72px 1.5rem 96px;
   }
 
   .reviews-heading {
     text-align: center;
-    margin-bottom: 34px;
+    margin-bottom: 54px;
   }
 
   .reviews-heading p {
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: clamp(1rem, 1.4vw, 1.45rem);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #a330a5;
@@ -151,59 +234,202 @@ const reviews = [
   .reviews-heading h2 {
     margin: 0;
     font-family: var(--font-gladiola);
-    font-size: clamp(3rem, 7vw, 82px);
+    font-size: clamp(4.4rem, 5.4vw, 56px);
     font-style: italic;
-    line-height: 0.95;
+    font-weight: 800;
     color: #290087;
+    line-height: 1;
   }
 
   .review-board {
-    width: min(1050px, 88%);
+    width: min(1540px, 86vw);
     margin: 0 auto;
     position: relative;
+    overflow: visible;
+    min-height: 340px;
   }
 
   .review-grid {
     width: 100%;
     height: auto;
+    display: block;
+  }
+
+  .review-set {
+    position: absolute;
+    inset: 0;
+    transition:
+      opacity 900ms ease,
+      transform 900ms ease;
+  }
+
+  .review-set.inactive {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.98);
+  }
+
+  .review-set.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
   }
 
   .review-tag {
     position: absolute;
     left: var(--x);
     top: var(--y);
-    width: clamp(205px, 20vw, 280px);
-    aspect-ratio: 2.05 / 1;
-    display: grid;
-    place-items: center;
-    padding: 1.15rem 1.35rem;
+    z-index: 3;
+
+    width: clamp(320px, 24vw, 420px);
+    min-height: clamp(140px, 9vw, 170px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: rotate(calc(var(--base-rotate) + var(--random-rotate)));
+    transform-origin: center;
+    transition: transform 900ms ease;
+    animation: reviewFloat 12s ease-in-out infinite alternate;
+
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .review-tag::before {
+    content: "";
+    position: absolute;
+    inset: -54% -38%;
     background-image: var(--tag);
     background-size: 100% 100%;
+    background-position: center;
     background-repeat: no-repeat;
-    transform: rotate(var(--rotate));
-    text-align: center;
+    z-index: -1;
+    pointer-events: none;
   }
 
-  .review-tag p {
-    margin: 0 0 0.35rem;
+  .review-copy {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 0.95rem 1rem 0.95rem;
+    background: #f7ffea;
+    border-radius: 20px;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-copy p {
+    margin: 0 0 0.8rem;
     font-family: var(--font-body);
-    font-size: clamp(0.72rem, 1vw, 14px);
-    line-height: 1.18;
+    font-size: clamp(1.1rem, 1.3vw, 1.5rem);
+    line-height: 1.4;
     font-style: italic;
-    color: #8e7cca;
+    font-weight: 400;
+    color: #4f3a8f;
   }
 
-  .review-tag strong {
+  .review-copy strong {
+    display: block;
     font-family: var(--font-body);
-    font-size: clamp(0.55rem, 0.8vw, 11px);
+    font-size: clamp(0.75rem, 0.9vw, 1rem);
+    line-height: 1.15;
     font-weight: 800;
-    color: #ffdc7e;
+    color: #ffcf67;
+  }
+
+  .review-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .review-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(41, 0, 135, 0.24);
+    transition:
+      background 260ms ease,
+      transform 260ms ease;
+  }
+
+  .review-dot.active {
+    background: #a330a5;
+    transform: scale(1.2);
+  }
+
+  @keyframes reviewFloat {
+    0% {
+      transform: translateY(0px)
+        rotate(calc(var(--base-rotate) + var(--random-rotate)));
+    }
+    100% {
+      transform: translateY(-12px)
+        rotate(calc(var(--base-rotate) + var(--random-rotate)));
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .review-board {
+      width: min(1080px, 86vw);
+    }
+
+    .review-tag {
+      width: clamp(260px, 25vw, 330px);
+      min-height: clamp(105px, 10vw, 140px);
+    }
+
+    .review-tag::before {
+      inset: -48% -36%;
+    }
+
+    .review-copy {
+      max-width: 250px;
+    }
+
+    .review-copy p {
+      font-size: clamp(0.85rem, 1.35vw, 1.05rem);
+    }
+
+    .review-copy strong {
+      font-size: clamp(0.62rem, 0.9vw, 0.78rem);
+    }
   }
 
   @media (max-width: 850px) {
+    .reviews-paper {
+      padding-top: 78px;
+      padding-bottom: 92px;
+    }
+
+    .torn.torn-top {
+      top: -34px;
+    }
+
+    .torn.torn-bottom {
+      bottom: -34px;
+    }
+
+    .reviews-content {
+      padding: 64px 1.25rem 72px;
+    }
+
+    .reviews-heading {
+      margin-bottom: 34px;
+    }
+
+    .reviews-heading h2 {
+      font-size: clamp(3.8rem, 15vw, 5.8rem);
+    }
+
     .review-board {
       display: grid;
-      gap: 1rem;
+      gap: 2rem;
+      width: min(430px, 92vw);
     }
 
     .review-grid {
@@ -211,9 +437,64 @@ const reviews = [
     }
 
     .review-tag {
-      position: static;
-      width: min(310px, 92%);
+      position: relative;
+      left: auto;
+      top: auto;
+      width: min(310px, 76vw);
+      min-height: 130px;
       margin: 0 auto;
+    }
+
+    .review-tag::before {
+      inset: -44% -34%;
+    }
+
+    .review-copy {
+      max-width: 250px;
+    }
+
+    .review-copy p {
+      font-size: clamp(0.95rem, 4.2vw, 1.2rem);
+    }
+
+    .review-copy strong {
+      font-size: clamp(0.7rem, 3vw, 0.85rem);
     }
   }
 </style>
+
+<script is:inline>
+  function applyRandomReviewRotations() {
+    document.querySelectorAll(".review-tag").forEach((tag) => {
+      const random = (Math.random() * 5 - 2.5).toFixed(2);
+      tag.style.setProperty("--random-rotate", `${random}deg`);
+    });
+  }
+
+  function updateReviewVisibility() {
+    const sets = document.querySelectorAll(".review-set");
+    const dots = document.querySelectorAll(".review-dot");
+    let activeIndex = 0;
+
+    function showSet(index) {
+      sets.forEach((set, i) => {
+        set.classList.toggle("active", i === index);
+        set.classList.toggle("inactive", i !== index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    }
+
+    showSet(activeIndex);
+
+    setInterval(() => {
+      activeIndex = (activeIndex + 1) % sets.length;
+      showSet(activeIndex);
+    }, 6500);
+  }
+
+  applyRandomReviewRotations();
+  setInterval(applyRandomReviewRotations, 3500);
+  window.addEventListener("load", updateReviewVisibility);
+</script>

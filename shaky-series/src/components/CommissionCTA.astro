@@ -1,9 +1,9 @@
 <section id="request" class="commission-cta">
   <p class="section-kicker">Let’s work together</p>
-  <h2>Ready to start your Commission?</h2>
+  <h2>Ready to start your Commission<span class="question-mark">?</span></h2>
   <p>Click that button if you’re ready for some lunemint action!~</p>
   <button class="lunemint-button" id="open-commission" type="button">
-    Request a Commission ✦
+    Request a Commission<span class="question-mark">?</span>
   </button>
 </section>
 
@@ -58,7 +58,7 @@
 <style>
   .commission-cta {
     text-align: center;
-    padding: 52px 1rem 58px;
+    padding: 84px 1rem 96px;
     background-color: #f7ffea;
     background-image: linear-gradient(
       rgba(142, 124, 202, 0.28) 1px,
@@ -70,20 +70,74 @@
   }
 
   .commission-cta h2 {
-    margin: 11px 0 10px;
+    margin: 16px 0 12px;
     font-family: var(--font-sergio);
-    font-size: clamp(2rem, 4.4vw, 40.5px);
+    font-size: clamp(3rem, 6vw, 60px);
     font-weight: 900;
     color: #a330a5;
-    line-height: 1.05;
+    line-height: 1.02;
   }
 
   .commission-cta p:not(.section-kicker) {
-    margin: 0 0 18px;
+    margin: 0 0 24px;
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     color: #29018a;
+  }
+
+  .section-kicker {
+    margin: 0;
+    color: #280187;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+  }
+
+  .question-mark {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-variant-ligatures: none;
+    font-feature-settings:
+      "liga" 0,
+      "clig" 0;
+    text-rendering: optimizeLegibility;
+    font-size: 1.05em;
+    letter-spacing: 0;
+    margin-left: 0;
+  }
+
+  .lunemint-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    border: 0;
+    border-radius: 999px;
+    padding: 1rem 1.8rem;
+    background: #d9c4ff;
+    color: #290185;
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    font-weight: 800;
+    box-shadow: 0 5px 0 #290087;
+    cursor: pointer;
+    transition:
+      transform 180ms ease,
+      background 180ms ease,
+      color 180ms ease;
+  }
+
+  .lunemint-button:hover {
+    transform: translateY(-1px);
+    background: #e7b0f3;
+    color: #290185;
+  }
+
+  .lunemint-button img {
+    width: 16px;
+    height: 16px;
+    filter: drop-shadow(0 0 4px rgba(255, 220, 126, 0.45));
   }
 
   .commission-modal {

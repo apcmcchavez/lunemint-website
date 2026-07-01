@@ -5,14 +5,16 @@
 
       <h1>
         <span class="white-line">Your idea called.</span>
-        <span class="lavender-line">It wants a</span>
-        <span class="glow-word">
-          glow-up
-          <img
-            src="/images/hero/glow-up-underline.svg"
-            alt=""
-            aria-hidden="true"
-          />
+        <span class="lavender-line">
+          It wants a
+          <span class="glow-word">
+            glow-up
+            <img
+              src="/images/hero/glow-up-underline.svg"
+              alt=""
+              aria-hidden="true"
+            />
+          </span>
         </span>
       </h1>
 
@@ -40,7 +42,7 @@
 
 <style>
   .hero {
-    min-height: 620px;
+    min-height: 780px;
     position: relative;
     overflow: hidden;
     background-color: #25004f;
@@ -51,27 +53,35 @@
 
   .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     display: grid;
     grid-template-columns: 1fr 0.82fr;
     align-items: center;
+    justify-items: center;
     gap: 2rem;
-    padding: 115px 7.5% 165px;
+    padding: 170px 7.5% 220px 6%;
+  }
+
+  .hero-copy {
+    max-width: 760px;
+    width: 100%;
+    text-align: center;
   }
 
   .hero-kicker {
     margin: 0 0 0.6rem;
     font-family: var(--font-sergio);
-    font-size: clamp(1.45rem, 2.3vw, 30.5px);
+    font-size: clamp(1.7rem, 2.3vw, 34px);
     font-weight: 900;
     color: #a330a5;
     text-shadow: 2px 2px 0 rgba(41, 0, 135, 0.45);
   }
 
   .hero h1 {
-    margin: 0;
-    line-height: 0.86;
+    margin: 0 auto;
+    line-height: 0.92;
     letter-spacing: -0.055em;
+    text-align: center;
   }
 
   .hero h1 span {
@@ -81,7 +91,7 @@
   .white-line,
   .lavender-line {
     font-family: var(--font-serif);
-    font-size: clamp(3.2rem, 6.2vw, 71.1px);
+    font-size: clamp(3.8rem, 6.2vw, 80px);
     font-weight: 600;
   }
 
@@ -91,15 +101,21 @@
 
   .lavender-line {
     color: #8e7cca;
+    display: inline-flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.55rem;
+    line-height: 0.95;
   }
 
   .glow-word {
-    width: fit-content;
+    display: inline-flex;
     position: relative;
-    margin-left: 38%;
-    margin-top: -0.98em;
+    margin: 0 0 0 0.55rem;
     font-family: var(--font-gladiola);
-    font-size: clamp(3rem, 5.8vw, 66.4px);
+    font-size: clamp(2.4rem, 4vw, 56px);
+    line-height: 1;
     font-style: italic;
     font-weight: 700;
     color: #ffdc7e;
@@ -112,18 +128,20 @@
 
   .glow-word img {
     position: absolute;
-    left: 6%;
-    bottom: -0.18em;
-    width: 92%;
+    left: 0;
+    right: 0;
+    bottom: -0.14em;
+    width: 100%;
     height: auto;
+    transform: translateY(2px);
   }
 
   .hero-description {
-    max-width: 520px;
-    margin: 1.1rem 0 0;
+    max-width: 620px;
+    margin: 1.1rem auto 0;
     font-family: var(--font-body);
-    font-size: clamp(0.8rem, 1.2vw, 15.4px);
-    line-height: 1.45;
+    font-size: clamp(0.95rem, 1.1vw, 16.4px);
+    line-height: 1.55;
     color: #c8c6e6;
   }
 
@@ -142,8 +160,8 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -1px;
-    z-index: 3;
+    bottom: -100px;
+    z-index: 1;
     width: 100%;
     pointer-events: none;
   }
