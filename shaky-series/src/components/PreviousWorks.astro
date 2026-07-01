@@ -4,59 +4,59 @@ const works = [
     title: "Digital Pubmats",
     description:
       "Flyer, posters, IG carousels, event templates, and promo graphics.",
-    link: "#",
+    link: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE",
     image: "/images/hero/stars-hero-bg.webp",
   },
   {
     title: "Pastel Palette",
     description:
       "Moodboards, graphics, and creative visual sets for dreamy vibes.",
-    link: "#",
+    link: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE",
     image: "/images/patterns/what-i-offer-bg.png",
   },
   {
     title: "Mini Template",
     description: "Canva templates for school, orgs, and small brands.",
-    link: "#",
+    link: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE",
     image: "/images/about/about-me-stars-bg.png",
   },
   {
     title: "Presentation Decks",
     description: "Clean, polished decks and slide layouts for school and work.",
-    link: "#",
+    link: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE",
     image: "/images/hero/watercolor-mountains-hero-bg.webp",
   },
   {
     title: "Resume Templates",
     description: "Polished resumes with a soft, modern visual identity.",
-    link: "#",
+    link: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE",
     image: "/images/reviews/customer-reviews-grid.png",
   },
   {
     title: "Patterned Designs",
     description: "Reusable patterns and graphics for print and digital pieces.",
-    link: "#",
+    link: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE",
     image: "/images/patterns/plaid-flower-strip.png",
   },
   {
     title: "Birthday Collage",
     description:
       "Custom theme collages for gifts, socials, and personal projects.",
-    link: "#",
+    link: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE",
     image: "/images/patterns/purple-gridlines-bg.webp",
   },
   {
     title: "Study Planner",
     description:
       "Organized planner templates for students who want cute productivity.",
-    link: "#",
+    link: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE",
     image: "/images/patterns/what-i-offer-bg.png",
   },
   {
     title: "Workshop Poster",
     description:
       "Eye-catching posters designed for school events and creative workshops.",
-    link: "#",
+    link: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE",
     image: "/images/about/about-me-stars-bg.png",
   },
 ];
@@ -77,29 +77,25 @@ const works = [
       alt="Previous Works"
     />
 
-    <div class="container-fluid">
-      <div class="horiz-gallery-wrapper" aria-label="Previous works carousel">
-        <div class="horiz-gallery-strip">
-          {
-            works.map((work, index) => (
-              <article class={`project-wrap polaroid tilt-${(index % 4) + 1}`}>
-                <div class="polaroid-art">
-                  <img src={work.image} alt={work.title} />
-                  <div class="polaroid-overlay" />
-                </div>
+    <div class="polaroid-scroller" aria-label="Previous works carousel">
+      {
+        works.map((work, index) => (
+          <article class={`polaroid tilt-${(index % 4) + 1}`}>
+            <div class="polaroid-art">
+              <img src={work.image} alt={work.title} />
+              <div class="polaroid-overlay" />
+            </div>
 
-                <div class="polaroid-text">
-                  <h3>{work.title}</h3>
-                  <p>{work.description}</p>
-                  <a href={work.link} target="_blank" rel="noreferrer">
-                    See works →
-                  </a>
-                </div>
-              </article>
-            ))
-          }
-        </div>
-      </div>
+            <div class="polaroid-text">
+              <h3>{work.title}</h3>
+              <p>{work.description}</p>
+              <a href={work.link} target="_blank" rel="noopener noreferrer">
+                View folder →
+              </a>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -111,7 +107,7 @@ const works = [
 
   .previous-works {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     background-color: #773db2;
     background-image: url("/images/patterns/purple-gridlines-bg.webp");
     background-size: cover;
@@ -130,8 +126,7 @@ const works = [
   }
 
   .works-inner {
-    padding: 80px 0 100px;
-    overflow: visible;
+    padding: 80px 0 92px;
   }
 
   .works-title {
@@ -141,57 +136,84 @@ const works = [
     max-width: 1100px;
   }
 
-  .container-fluid {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    overflow: visible;
-  }
-
-  .horiz-gallery-wrapper {
-    width: 100%;
-    position: relative;
-    overflow: visible;
-  }
-
-  .horiz-gallery-strip {
+  .polaroid-scroller {
     display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
     gap: 44px;
-    width: max-content;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+
     padding: 28px max(48px, calc((100vw - 1280px) / 2)) 58px;
-    will-change: transform;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
   }
 
-  .project-wrap {
-    flex: 0 0 340px;
-    width: 340px;
-    box-sizing: border-box;
+  .polaroid-scroller:hover {
+    cursor: grab;
+  }
+
+  .polaroid-scroller.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+  }
+
+  .polaroid-scroller::-webkit-scrollbar {
+    display: none;
   }
 
   .polaroid {
+    flex: 0 0 340px;
+    width: 340px;
     min-height: 480px;
+    scroll-snap-align: start;
+
     background: white;
     padding: 18px 18px 22px;
     box-shadow: 0 12px 0 rgba(41, 0, 135, 0.42);
-    scroll-snap-align: start;
+
+    transition:
+      transform 280ms ease,
+      box-shadow 280ms ease;
+  }
+
+  .polaroid:hover {
+    box-shadow: 0 16px 0 rgba(41, 0, 135, 0.46);
   }
 
   .tilt-1 {
     transform: rotate(-3deg);
   }
 
+  .tilt-1:hover {
+    transform: rotate(-3deg) translateY(-8px);
+  }
+
   .tilt-2 {
     transform: rotate(2deg) translateY(-12px);
+  }
+
+  .tilt-2:hover {
+    transform: rotate(2deg) translateY(-20px);
   }
 
   .tilt-3 {
     transform: rotate(-2deg);
   }
 
+  .tilt-3:hover {
+    transform: rotate(-2deg) translateY(-8px);
+  }
+
   .tilt-4 {
     transform: rotate(4deg);
+  }
+
+  .tilt-4:hover {
+    transform: rotate(4deg) translateY(-8px);
   }
 
   .polaroid-art {
@@ -242,44 +264,41 @@ const works = [
   }
 
   .polaroid-text a {
+    display: inline-block;
+    margin-top: 2px;
     font-family: var(--font-body);
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: 0.02em;
     color: #a330a5;
+    text-decoration: none;
+    transition:
+      color 220ms ease,
+      transform 220ms ease;
+  }
+
+  .polaroid-text a:hover {
+    color: #40098c;
+    transform: translateX(4px);
   }
 
   @media (max-width: 850px) {
     .works-inner {
-      padding: 64px 0 80px;
+      padding: 64px 0 76px;
     }
 
     .works-title {
       margin-bottom: 32px;
     }
 
-    .horiz-gallery-wrapper {
-      overflow-x: auto;
-      overflow-y: visible;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .horiz-gallery-wrapper::-webkit-scrollbar {
-      display: none;
-    }
-
-    .horiz-gallery-strip {
+    .polaroid-scroller {
       gap: 28px;
       padding: 24px 28px 48px;
-      scroll-snap-type: x proximity;
-    }
-
-    .project-wrap {
-      flex-basis: 280px;
-      width: 280px;
     }
 
     .polaroid {
+      flex-basis: 280px;
+      width: 280px;
       min-height: 410px;
     }
 
@@ -290,67 +309,124 @@ const works = [
 </style>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
   (() => {
-    const wrapper = document.querySelector<HTMLElement>(
-      ".previous-works .horiz-gallery-wrapper",
+    const foundScroller =
+      document.querySelector<HTMLElement>(".polaroid-scroller");
+
+    if (!foundScroller) return;
+
+    const scroller: HTMLElement = foundScroller;
+
+    let targetScrollLeft: number = scroller.scrollLeft;
+    let currentScrollLeft: number = scroller.scrollLeft;
+    let animationFrame: number = 0;
+
+    function clamp(value: number, min: number, max: number): number {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function maxScrollLeft(): number {
+      return Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+    }
+
+    function smoothStep(): void {
+      currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.14;
+      scroller.scrollLeft = currentScrollLeft;
+
+      if (Math.abs(targetScrollLeft - currentScrollLeft) > 0.5) {
+        animationFrame = window.requestAnimationFrame(smoothStep);
+      } else {
+        scroller.scrollLeft = targetScrollLeft;
+        animationFrame = 0;
+      }
+    }
+
+    function startSmoothScroll(): void {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(smoothStep);
+    }
+
+    scroller.addEventListener(
+      "wheel",
+      (event: WheelEvent) => {
+        const canScrollHorizontally =
+          scroller.scrollWidth > scroller.clientWidth;
+
+        if (!canScrollHorizontally) return;
+
+        const scrollingDown = event.deltaY > 0;
+        const scrollingUp = event.deltaY < 0;
+        const atStart = scroller.scrollLeft <= 0;
+        const atEnd = scroller.scrollLeft >= maxScrollLeft() - 1;
+
+        if ((scrollingUp && atStart) || (scrollingDown && atEnd)) {
+          return;
+        }
+
+        event.preventDefault();
+
+        const wheelAmount =
+          Math.abs(event.deltaX) > Math.abs(event.deltaY)
+            ? event.deltaX
+            : event.deltaY;
+
+        targetScrollLeft = clamp(
+          targetScrollLeft + wheelAmount * 0.9,
+          0,
+          maxScrollLeft(),
+        );
+
+        startSmoothScroll();
+      },
+      { passive: false },
     );
 
-    const strip =
-      wrapper?.querySelector<HTMLElement>(".horiz-gallery-strip") ?? null;
+    let isDragging: boolean = false;
+    let startX: number = 0;
+    let startScrollLeft: number = 0;
 
-    if (!wrapper || !strip) return;
+    scroller.addEventListener("pointerdown", (event: PointerEvent) => {
+      isDragging = true;
+      startX = event.clientX;
+      startScrollLeft = scroller.scrollLeft;
+      targetScrollLeft = scroller.scrollLeft;
+      currentScrollLeft = scroller.scrollLeft;
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+      scroller.classList.add("is-dragging");
+      scroller.setPointerCapture(event.pointerId);
+    });
 
-    if (prefersReducedMotion) return;
+    scroller.addEventListener("pointermove", (event: PointerEvent) => {
+      if (!isDragging) return;
 
-    const mm = gsap.matchMedia();
+      const distance = event.clientX - startX;
+      scroller.scrollLeft = startScrollLeft - distance;
+      targetScrollLeft = scroller.scrollLeft;
+      currentScrollLeft = scroller.scrollLeft;
+    });
 
-    mm.add("(min-width: 851px)", () => {
-      const getScrollDistance = () =>
-        Math.max(0, strip.scrollWidth - wrapper.clientWidth);
+    function stopDragging(event: PointerEvent): void {
+      isDragging = false;
+      scroller.classList.remove("is-dragging");
 
-      const tween = gsap.to(strip, {
-        x: () => -getScrollDistance(),
-        ease: "none",
-        paused: true,
-      });
-
-      const trigger = ScrollTrigger.create({
-        trigger: wrapper,
-        start: "center center",
-        end: () => `+=${strip.scrollWidth}`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        animation: tween,
-      });
-
-      if (document.readyState === "complete") {
-        ScrollTrigger.refresh();
-      } else {
-        window.addEventListener(
-          "load",
-          () => {
-            ScrollTrigger.refresh();
-          },
-          { once: true },
-        );
+      try {
+        scroller.releasePointerCapture(event.pointerId);
+      } catch {
+        /* pointer capture may already be released */
       }
+    }
 
-      return () => {
-        trigger.kill();
-        tween.kill();
-        gsap.set(strip, { clearProps: "transform" });
-      };
+    scroller.addEventListener("pointerup", (event: PointerEvent) => {
+      stopDragging(event);
+    });
+
+    scroller.addEventListener("pointercancel", (event: PointerEvent) => {
+      stopDragging(event);
+    });
+
+    window.addEventListener("resize", () => {
+      targetScrollLeft = clamp(scroller.scrollLeft, 0, maxScrollLeft());
+      currentScrollLeft = targetScrollLeft;
     });
   })();
 </script>

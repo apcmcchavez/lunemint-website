@@ -5,10 +5,11 @@
 
       <h1>
         <span class="white-line">Your idea called.</span>
+
         <span class="lavender-line">
-          It wants a
+          <span class="wants-text">It wants a </span>
           <span class="glow-word">
-            glow-up
+            glow-up.
             <img
               src="/images/hero/glow-up-underline.svg"
               alt=""
@@ -42,9 +43,10 @@
 
 <style>
   .hero {
-    min-height: 780px;
+    min-height: 940px;
     position: relative;
     overflow: hidden;
+
     background-color: #25004f;
     background-image: url("/images/hero/stars-hero-bg.webp");
     background-size: cover;
@@ -53,45 +55,48 @@
 
   .hero-content {
     position: relative;
-    z-index: 3;
+    z-index: 4;
+
     display: grid;
-    grid-template-columns: 1fr 0.82fr;
+    grid-template-columns: minmax(0, 1fr) minmax(330px, 0.78fr);
     align-items: center;
-    justify-items: center;
-    gap: 2rem;
-    padding: 170px 7.5% 220px 6%;
+    gap: 2.2rem;
+
+    min-height: 940px;
+    padding: 130px 7.5% 410px;
+    box-sizing: border-box;
   }
 
   .hero-copy {
-    max-width: 760px;
     width: 100%;
+    max-width: 900px;
     text-align: center;
+    transform: translateY(18px);
   }
 
   .hero-kicker {
-    margin: 0 0 0.6rem;
+    margin: 0 0 0.8rem;
     font-family: var(--font-sergio);
-    font-size: clamp(1.7rem, 2.3vw, 34px);
+    font-size: clamp(1.95rem, 2.8vw, 3rem);
     font-weight: 900;
     color: #a330a5;
     text-shadow: 2px 2px 0 rgba(41, 0, 135, 0.45);
   }
 
   .hero h1 {
-    margin: 0 auto;
-    line-height: 0.92;
+    margin: 0;
+    line-height: 0.88;
     letter-spacing: -0.055em;
-    text-align: center;
   }
 
-  .hero h1 span {
+  .hero h1 > span {
     display: block;
   }
 
   .white-line,
-  .lavender-line {
+  .wants-text {
     font-family: var(--font-serif);
-    font-size: clamp(3.8rem, 6.2vw, 80px);
+    font-size: clamp(4.2rem, 6.9vw, 7.4rem);
     font-weight: 600;
   }
 
@@ -100,25 +105,36 @@
   }
 
   .lavender-line {
-    color: #8e7cca;
-    display: inline-flex;
+    display: flex;
     align-items: flex-end;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 0.55rem;
-    line-height: 0.95;
+    flex-wrap: nowrap;
+    gap: clamp(0.9rem, 1.5vw, 1.7rem);
+    color: #8e7cca;
+    margin-top: 0.2rem;
+  }
+
+  .wants-text {
+    color: #8e7cca;
+    white-space: nowrap;
   }
 
   .glow-word {
     display: inline-flex;
     position: relative;
-    margin: 0 0 0 0.55rem;
+    flex-shrink: 0;
+
     font-family: var(--font-gladiola);
-    font-size: clamp(2.4rem, 4vw, 56px);
-    line-height: 1;
+    font-size: clamp(3.2rem, 5.2vw, 5.9rem);
+    line-height: 0.92;
     font-style: italic;
     font-weight: 700;
+
     color: #ffdc7e;
+    white-space: nowrap;
+
+    transform: translateY(0.02em);
+
     text-shadow:
       0 0 4px rgba(255, 220, 126, 0.9),
       0 0 10px rgba(255, 220, 126, 0.45),
@@ -128,20 +144,19 @@
 
   .glow-word img {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -0.14em;
-    width: 100%;
+    left: -5%;
+    bottom: -0.19em;
+    width: 110%;
     height: auto;
-    transform: translateY(2px);
+    pointer-events: none;
   }
 
   .hero-description {
-    max-width: 620px;
-    margin: 1.1rem auto 0;
+    max-width: 760px;
+    margin: 1.55rem auto 0;
     font-family: var(--font-body);
-    font-size: clamp(0.95rem, 1.1vw, 16.4px);
-    line-height: 1.55;
+    font-size: clamp(1rem, 1.3vw, 1.45rem);
+    line-height: 1.45;
     color: #c8c6e6;
   }
 
@@ -149,43 +164,107 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: translateY(26px);
   }
 
   .hero-logo-wrap img {
-    width: clamp(230px, 28vw, 390px);
-    filter: drop-shadow(0 14px 12px rgba(0, 0, 0, 0.3));
+    width: clamp(340px, 31vw, 520px);
+    height: auto;
+    filter: drop-shadow(0 16px 14px rgba(0, 0, 0, 0.36));
   }
 
   .mountains {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -100px;
-    z-index: 1;
+    bottom: -2px;
+    z-index: 2;
+
     width: 100%;
+    height: auto;
+
+    display: block;
     pointer-events: none;
+  }
+
+  @media (max-width: 1180px) {
+    .hero {
+      min-height: 900px;
+    }
+
+    .hero-content {
+      min-height: 900px;
+      grid-template-columns: 1fr 0.72fr;
+      padding: 120px 5% 390px;
+    }
+
+    .white-line,
+    .wants-text {
+      font-size: clamp(3.8rem, 6.4vw, 6.2rem);
+    }
+
+    .glow-word {
+      font-size: clamp(2.9rem, 5vw, 5rem);
+    }
+
+    .hero-logo-wrap img {
+      width: clamp(280px, 30vw, 430px);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .lavender-line {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
   }
 
   @media (max-width: 760px) {
     .hero {
-      min-height: 720px;
+      min-height: 920px;
     }
 
     .hero-content {
+      min-height: 920px;
       grid-template-columns: 1fr;
       text-align: center;
-      padding: 70px 1.4rem 170px;
+      padding: 95px 1.4rem 330px;
+      gap: 2rem;
+    }
+
+    .hero-copy {
+      transform: translateY(0);
+    }
+
+    .hero-logo-wrap {
+      transform: translateY(0);
+    }
+
+    .white-line,
+    .wants-text {
+      font-size: clamp(3.2rem, 12.8vw, 4.7rem);
     }
 
     .glow-word {
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 0.05rem;
+      font-size: clamp(2.8rem, 11vw, 4rem);
     }
 
     .hero-description {
       margin-left: auto;
       margin-right: auto;
+      font-size: 1rem;
+    }
+
+    .hero-logo-wrap img {
+      width: min(310px, 74vw);
+    }
+
+    .mountains {
+      width: 150%;
+      max-width: none;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -2px;
     }
   }
 </style>
