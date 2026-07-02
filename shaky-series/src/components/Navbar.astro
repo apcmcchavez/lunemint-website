@@ -34,6 +34,11 @@
   }
 
   .nav-inner a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px; /* Touch target safety */
+    padding: 0 4px;
     font-family: var(--font-body);
     font-size: 14.3px;
     font-weight: 700;
@@ -68,6 +73,21 @@
     .brand {
       grid-column: 1 / -1;
       grid-row: 1;
+    }
+
+    .nav-inner a {
+      min-height: 44px;
+      padding: 6px 4px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-inner a:not(.brand) {
+      font-size: 12px;
+    }
+
+    .brand img {
+      width: 100px;
     }
   }
 </style>

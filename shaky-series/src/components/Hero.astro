@@ -251,11 +251,11 @@
 
     .white-line,
     .wants-text {
-      font-size: clamp(3.2rem, 12.8vw, 4.7rem);
+      font-size: clamp(2.3rem, 10vw, 4.7rem);
     }
 
     .glow-word {
-      font-size: clamp(2.8rem, 11vw, 4rem);
+      font-size: clamp(1.9rem, 9vw, 4rem);
     }
 
     .hero-description {
@@ -274,6 +274,36 @@
       left: 50%;
       transform: translateX(-50%);
       bottom: -2px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      min-height: 800px;
+    }
+
+    .hero-content {
+      min-height: 800px;
+      padding: 70px 1rem 220px;
+      gap: 1.5rem;
+    }
+
+    .white-line,
+    .wants-text {
+      font-size: clamp(1.8rem, 8vw, 2.8rem);
+    }
+
+    .glow-word {
+      font-size: clamp(1.6rem, 7vw, 2.4rem);
+    }
+
+    .hero-description {
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .hero-logo-wrap img {
+      width: min(240px, 80vw);
     }
   }
 </style>

@@ -833,7 +833,13 @@ Sent from the Lunemint commission form.`);
     .modal-close-btn {
       top: 14px;
       right: 14px;
-      background: rgba(255, 255, 255, 0.7);
+      width: 44px;
+      height: 44px;
+      font-size: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #290087;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(41, 0, 135, 0.15);
     }
 
     .cm-form-panel {
@@ -848,6 +854,29 @@ Sent from the Lunemint commission form.`);
 
     .cm-receipt-content {
       padding: 38px 24px 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cm-form-panel {
+      padding: 36px 16px 24px;
+    }
+
+    .cm-receipt-content {
+      padding: 28px 16px 20px;
+    }
+
+    .receipt-card {
+      padding: 16px 14px;
+    }
+
+    .cm-title {
+      font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+
+    .cm-subtitle {
+      font-size: 0.85rem;
+      margin: 0.5rem 0 1.25rem;
     }
   }
 </style>
