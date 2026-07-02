@@ -2,63 +2,384 @@
   <p class="section-kicker">Let’s work together</p>
   <h2>Ready to start your Commission<span class="question-mark">?</span></h2>
   <p>Click that button if you’re ready for some lunemint action!~</p>
+
   <button class="lunemint-button" id="open-commission" type="button">
     Request a Commission<span class="question-mark">?</span>
   </button>
 </section>
 
 <dialog class="commission-modal" id="commission-modal">
-  <form method="dialog" class="modal-card">
-    <button class="close-button" value="close" aria-label="Close form">×</button
+  <div class="commission-modal-inner">
+    <button
+      class="modal-close-btn"
+      id="close-commission"
+      type="button"
+      aria-label="Close commission form"
     >
+      ×
+    </button>
 
-    <h3>Commission Request</h3>
-    <p>
-      Form layout placeholder. We’ll replace this once you send the form sample.
-    </p>
+    <form class="cm-form-panel" id="commission-form">
+      <span class="cm-eyebrow">✦ Commission Desk</span>
 
-    <label>
-      Name
-      <input type="text" placeholder="Your name" />
-    </label>
+      <h3 class="cm-title">New Commission</h3>
+      <p class="cm-subtitle">
+        No payment yet — this form is only for request review and quotation ✦
+      </p>
 
-    <label>
-      Project type
-      <input
-        type="text"
-        placeholder="Presentation, Canva graphic, resume, etc."
-      />
-    </label>
+      <div class="cm-row">
+        <label class="cm-field">
+          <span class="cm-label">Your Name</span>
+          <input
+            class="cm-input"
+            type="text"
+            id="c-name"
+            name="name"
+            placeholder="Enter your name"
+            required
+          />
+        </label>
 
-    <label>
-      Notes
-      <textarea placeholder="Tell me about your idea"></textarea>
-    </label>
+        <label class="cm-field">
+          <span class="cm-label">Email</span>
+          <input
+            class="cm-input"
+            type="email"
+            id="c-email"
+            name="email"
+            placeholder="Your email"
+            required
+          />
+        </label>
+      </div>
 
-    <button class="lunemint-button" type="submit">Submit Request ✦</button>
-  </form>
+      <div class="cm-row">
+        <label class="cm-field">
+          <span class="cm-label">Client Location</span>
+          <select class="cm-input" id="c-location" name="location" required>
+            <option value="">Select location</option>
+            <option>United States</option>
+            <option>Philippines</option>
+            <option>Other / International</option>
+          </select>
+        </label>
+
+        <label class="cm-field">
+          <span class="cm-label">Payment Preference</span>
+          <select class="cm-input" id="c-payment" name="payment">
+            <option value="">Select payment option</option>
+            <option>Cashapp / US</option>
+            <option>GCash / Philippines</option>
+            <option>To be discussed</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="cm-row">
+        <label class="cm-field">
+          <span class="cm-label">Project Type</span>
+          <select class="cm-input" id="c-type" name="type" required>
+            <option value="">Select a service</option>
+            <option>Canva Graphic</option>
+            <option>Presentation Deck</option>
+            <option>Resume Template</option>
+            <option>Patterned Design</option>
+            <option>Certificate Template</option>
+            <option>Invitation / Event Design</option>
+            <option>Other Custom Design</option>
+          </select>
+        </label>
+
+        <label class="cm-field">
+          <span class="cm-label">Deadline</span>
+          <input class="cm-input" type="date" id="c-deadline" name="deadline" />
+        </label>
+      </div>
+
+      <div class="cm-row">
+        <label class="cm-field">
+          <span class="cm-label">Budget Range</span>
+          <select class="cm-input" id="c-budget" name="budget">
+            <option value="">Select range</option>
+            <option>Under ₱200 / under $5</option>
+            <option>₱200–₱500 / around $5–$10</option>
+            <option>₱500–₱1,000 / around $10–$20</option>
+            <option>₱1,000+ / $20+</option>
+            <option>Still unsure</option>
+          </select>
+        </label>
+
+        <label class="cm-field">
+          <span class="cm-label">Request Purpose</span>
+          <select class="cm-input" id="c-purpose" name="purpose">
+            <option>Personal use</option>
+            <option>School / academic</option>
+            <option>Organization / event</option>
+            <option>Small business / brand</option>
+            <option>Other</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="cm-field full">
+        <span class="cm-label">Reference Link</span>
+        <input
+          class="cm-input"
+          type="url"
+          id="c-reference"
+          name="reference"
+          placeholder="Paste Canva, Pinterest, Drive, or inspo link if any"
+        />
+      </label>
+
+      <label class="cm-field full">
+        <span class="cm-label">Project Details</span>
+        <textarea
+          class="cm-input cm-textarea"
+          id="c-details"
+          name="details"
+          placeholder="Tell me about your project — theme, purpose, size, colors, deadline notes, references..."
+          required></textarea>
+      </label>
+
+      <p class="cm-note">
+        For ready-made templates, please check my Gumroad or Raket.ph instead.
+        Custom requests are reviewed first before pricing is finalized.
+      </p>
+
+      <button class="cm-submit" type="submit">Submit Request ✦</button>
+    </form>
+
+    <aside class="cm-receipt-panel">
+      <div class="cm-receipt-content">
+        <div class="receipt-card">
+          <h4>Starting Rates</h4>
+          <p>
+            Base prices are in PHP. USD/Cash App quotes are confirmed after I
+            review the request.
+          </p>
+
+          <div class="receipt-rate-row">
+            <span>Canva Graphics</span>
+            <strong>from ₱150</strong>
+          </div>
+
+          <div class="receipt-rate-row">
+            <span>Presentations</span>
+            <strong>from ₱300</strong>
+          </div>
+
+          <div class="receipt-rate-row">
+            <span>Resume Design</span>
+            <strong>from ₱200</strong>
+          </div>
+
+          <div class="receipt-rate-row">
+            <span>Patterned Designs</span>
+            <strong>from ₱250</strong>
+          </div>
+
+          <div class="receipt-rate-row">
+            <span>Certificates</span>
+            <strong>from ₱180</strong>
+          </div>
+        </div>
+
+        <div class="receipt-card mini-card">
+          <h4>Where to Buy</h4>
+          <p>
+            Gumroad and Raket.ph are for digital products. This form is for
+            custom commissions.
+          </p>
+
+          <div class="summary-line">
+            <span>US Payment</span>
+            <strong>Cash App</strong>
+          </div>
+
+          <div class="summary-line">
+            <span>PH Payment</span>
+            <strong>GCash</strong>
+          </div>
+        </div>
+
+        <div class="receipt-card">
+          <h4>What happens next?</h4>
+
+          <div class="receipt-step-row">
+            <span class="receipt-step-num">1</span>
+            <p>Submit your request.</p>
+          </div>
+
+          <div class="receipt-step-row">
+            <span class="receipt-step-num">2</span>
+            <p>I review the details and confirm if I can take it.</p>
+          </div>
+
+          <div class="receipt-step-row">
+            <span class="receipt-step-num">3</span>
+            <p>You receive the quote, timeline, and payment instructions.</p>
+          </div>
+
+          <div class="receipt-step-row">
+            <span class="receipt-step-num">4</span>
+            <p>Design work begins after confirmation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="receipt-barcode">
+        <div class="receipt-barcode-bars" id="commission-barcode"></div>
+        <div class="receipt-barcode-text">
+          Lunemint Designs ✦ Commission Desk
+        </div>
+      </div>
+    </aside>
+  </div>
 </dialog>
 
 <script>
-  const openButton = document.querySelector("#open-commission");
-  const modal = document.querySelector("#commission-modal");
+  const openButton =
+    document.querySelector<HTMLButtonElement>("#open-commission");
+  const closeButton =
+    document.querySelector<HTMLButtonElement>("#close-commission");
+  const modal = document.querySelector<HTMLDialogElement>("#commission-modal");
+  const form = document.querySelector<HTMLFormElement>("#commission-form");
 
-  openButton?.addEventListener("click", () => {
-    if (modal instanceof HTMLDialogElement) {
-      document.body.classList.add("modal-open");
-      modal.showModal();
+  const nameInput = document.querySelector<HTMLInputElement>("#c-name");
+  const emailInput = document.querySelector<HTMLInputElement>("#c-email");
+  const locationInput =
+    document.querySelector<HTMLSelectElement>("#c-location");
+  const paymentInput = document.querySelector<HTMLSelectElement>("#c-payment");
+  const typeInput = document.querySelector<HTMLSelectElement>("#c-type");
+  const budgetInput = document.querySelector<HTMLSelectElement>("#c-budget");
+  const deadlineInput = document.querySelector<HTMLInputElement>("#c-deadline");
+  const purposeInput = document.querySelector<HTMLSelectElement>("#c-purpose");
+  const referenceInput =
+    document.querySelector<HTMLInputElement>("#c-reference");
+  const detailsInput =
+    document.querySelector<HTMLTextAreaElement>("#c-details");
+  const barcode = document.querySelector<HTMLElement>("#commission-barcode");
+
+  function generateBarcode(): void {
+    if (!barcode) return;
+
+    barcode.innerHTML = "";
+
+    const heights = [
+      28, 42, 20, 36, 48, 24, 40, 31, 46, 22, 34, 44, 26, 38, 50, 30, 42, 24,
+      36, 48, 28, 40, 22, 34,
+    ];
+
+    heights.forEach((height) => {
+      const bar = document.createElement("span");
+      bar.style.height = `${height}px`;
+      barcode.appendChild(bar);
+    });
+  }
+
+  function formatDate(value: string): string {
+    if (!value) return "Flexible";
+
+    const date = new Date(`${value}T00:00:00`);
+
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
+
+  function openCommissionModal(): void {
+    if (!modal) return;
+
+    document.body.classList.add("modal-open");
+    modal.showModal();
+    generateBarcode();
+  }
+
+  function closeCommissionModal(): void {
+    if (!modal) return;
+
+    modal.close();
+    document.body.classList.remove("modal-open");
+  }
+
+  openButton?.addEventListener("click", openCommissionModal);
+  closeButton?.addEventListener("click", closeCommissionModal);
+
+  modal?.addEventListener("click", (event: MouseEvent) => {
+    if (event.target === modal) {
+      closeCommissionModal();
     }
   });
 
   modal?.addEventListener("close", () => {
     document.body.classList.remove("modal-open");
   });
+
+  form?.addEventListener("submit", (event: SubmitEvent) => {
+    event.preventDefault();
+
+    const name = nameInput?.value.trim() || "";
+    const email = emailInput?.value.trim() || "";
+    const location = locationInput?.value || "";
+    const payment = paymentInput?.value || "Not specified";
+    const type = typeInput?.value || "";
+    const budget = budgetInput?.value || "Not specified";
+    const deadline = deadlineInput?.value
+      ? formatDate(deadlineInput.value)
+      : "Flexible";
+    const purpose = purposeInput?.value || "Not specified";
+    const reference = referenceInput?.value.trim() || "None";
+    const details = detailsInput?.value.trim() || "";
+
+    if (!name || !email || !location || !type || !details) {
+      alert(
+        "Please fill in your name, email, location, project type, and project details before submitting ✦",
+      );
+      return;
+    }
+
+    const subject = encodeURIComponent(`New Commission Request from ${name}`);
+    const body = encodeURIComponent(`New Commission Request ✦
+
+Name: ${name}
+Email: ${email}
+Client Location: ${location}
+Payment Preference: ${payment}
+Project Type: ${type}
+Budget Range: ${budget}
+Deadline: ${deadline}
+Request Purpose: ${purpose}
+Reference Link: ${reference}
+
+Project Details:
+${details}
+
+---
+Sent from the Lunemint commission form.`);
+
+    window.location.href = `mailto:lunemint.designs@gmail.com?subject=${subject}&body=${body}`;
+
+    closeCommissionModal();
+
+    window.setTimeout(() => {
+      alert(
+        `Thank you, ${name}! ✦ Your email app should open with your commission request ready to send.`,
+      );
+    }, 250);
+  });
 </script>
 
 <style>
+  :global(body.modal-open) {
+    overflow: hidden;
+  }
+
   .commission-cta {
     text-align: center;
-    padding: 84px 1rem 96px;
+    padding: 84px 1rem 152px;
     background-color: #f7ffea;
     background-image: linear-gradient(
       rgba(142, 124, 202, 0.28) 1px,
@@ -91,6 +412,7 @@
     color: #280187;
     letter-spacing: 0.18em;
     font-weight: 700;
+    text-transform: uppercase;
   }
 
   .question-mark {
@@ -103,8 +425,6 @@
       "clig" 0;
     text-rendering: optimizeLegibility;
     font-size: 1.05em;
-    letter-spacing: 0;
-    margin-left: 0;
   }
 
   .lunemint-button {
@@ -134,76 +454,400 @@
     color: #290185;
   }
 
-  .lunemint-button img {
-    width: 16px;
-    height: 16px;
-    filter: drop-shadow(0 0 4px rgba(255, 220, 126, 0.45));
-  }
-
   .commission-modal {
-    width: min(560px, 92vw);
+    width: min(1120px, 94vw);
+    height: min(820px, calc(100dvh - 48px));
+    max-height: calc(100dvh - 48px);
+    position: fixed;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
     border: 0;
-    border-radius: 22px;
+    border-radius: 24px;
     padding: 0;
     background: transparent;
+    overflow: hidden;
   }
 
   .commission-modal::backdrop {
-    background: rgba(41, 0, 135, 0.42);
-    backdrop-filter: blur(8px);
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(255, 220, 126, 0.16),
+        transparent 34%
+      ),
+      rgba(41, 0, 135, 0.68);
+    backdrop-filter: blur(9px);
   }
 
-  .modal-card {
-    position: relative;
+  .commission-modal-inner {
+    width: 100%;
+    height: 100%;
     display: grid;
-    gap: 0.85rem;
-    padding: 2rem;
-    background: #f7ffea;
-    border: 3px solid #290087;
-    box-shadow: 10px 10px 0 #290087;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow:
+      0 34px 90px rgba(41, 0, 135, 0.46),
+      0 0 0 1px rgba(248, 250, 240, 0.18);
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    top: 18px;
+    right: 382px;
+    z-index: 20;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    color: rgba(41, 0, 135, 0.38);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      color 180ms ease,
+      transform 180ms ease,
+      background 180ms ease;
+  }
+
+  .modal-close-btn:hover {
+    color: #290087;
+    background: rgba(202, 197, 229, 0.22);
+    transform: rotate(8deg) scale(1.04);
+  }
+
+  .cm-form-panel {
+    background: #ffffff;
+    padding: 48px 46px 48px;
+    overflow-y: auto;
+    min-height: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .cm-form-panel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cm-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 18px;
+    padding: 7px 18px;
+    border-radius: 999px;
+    background: #290087;
+    color: #f8faf0;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .cm-title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 4vw, 4.2rem);
+    font-weight: 600;
+    line-height: 0.95;
     color: #290087;
   }
 
-  .modal-card h3 {
-    margin: 0;
-    font-family: var(--font-sergio);
-    font-size: 2rem;
-    color: #a330a5;
+  .cm-subtitle {
+    margin: 0.75rem 0 1.8rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    color: rgba(41, 0, 135, 0.48);
   }
 
-  .modal-card p {
-    margin: 0 0 0.5rem;
-  }
-
-  .modal-card label {
+  .cm-row {
     display: grid;
-    gap: 0.35rem;
-    font-weight: 800;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 16px;
   }
 
-  .modal-card input,
-  .modal-card textarea {
+  .cm-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .cm-row .cm-field {
+    margin-bottom: 0;
+  }
+
+  .cm-field.full {
     width: 100%;
-    border: 2px solid #c8c6e6;
-    border-radius: 10px;
-    padding: 0.75rem;
-    background: white;
   }
 
-  .modal-card textarea {
-    min-height: 110px;
+  .cm-label {
+    font-family: var(--font-body);
+    font-size: 0.73rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #290087;
+  }
+
+  .cm-input {
+    width: 100%;
+    min-height: 50px;
+    border: 1.5px solid rgba(41, 0, 135, 0.18);
+    border-radius: 10px;
+    outline: none;
+    background: #f8fffe;
+    color: #290087;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem;
+    box-sizing: border-box;
+    transition:
+      border-color 180ms ease,
+      background 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .cm-input:focus {
+    background: #ffffff;
+    border-color: #a330a5;
+    box-shadow: 0 0 0 4px rgba(163, 48, 165, 0.1);
+  }
+
+  .cm-input::placeholder {
+    color: rgba(41, 0, 135, 0.27);
+  }
+
+  .cm-textarea {
+    min-height: 112px;
     resize: vertical;
   }
 
-  .close-button {
-    position: absolute;
-    top: 0.8rem;
-    right: 1rem;
+  .cm-note {
+    margin: 0.3rem 0 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: rgba(41, 0, 135, 0.48);
+  }
+
+  .cm-submit {
+    width: 100%;
     border: 0;
-    background: transparent;
-    color: #a330a5;
-    font-size: 2rem;
+    border-radius: 999px;
+    padding: 1.05rem 1.2rem;
+    background: #290087;
+    color: #f8faf0;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
     font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     cursor: pointer;
+    transition:
+      transform 180ms ease,
+      background 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .cm-submit:hover {
+    background: #a330a5;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 22px rgba(41, 0, 135, 0.2);
+  }
+
+  .cm-receipt-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: #290087;
+    color: #f8faf0;
+    overflow: hidden;
+  }
+
+  .cm-receipt-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 18px;
+    background:
+      linear-gradient(-45deg, #290087 33.33%, transparent 33.33%) 0 0,
+      linear-gradient(45deg, #290087 33.33%, #ffffff 33.33%) 0 0;
+    background-size: 18px 18px;
+    background-repeat: repeat-x;
+    z-index: 2;
+  }
+
+  .cm-receipt-content {
+    flex: 1;
+    min-height: 0;
+    padding: 48px 30px 24px;
+  }
+
+  .receipt-card {
+    background: #f7ffea;
+    color: #290087;
+    border-radius: 16px;
+    padding: 20px 20px;
+    margin-bottom: 14px;
+  }
+
+  .receipt-card h4 {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-serif);
+    font-size: 1.28rem;
+    line-height: 1;
+    color: #290087;
+  }
+
+  .receipt-card p {
+    margin: 0 0 0.8rem;
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    line-height: 1.4;
+    color: rgba(41, 0, 135, 0.48);
+  }
+
+  .receipt-rate-row,
+  .summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px dashed rgba(41, 0, 135, 0.16);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+  }
+
+  .receipt-rate-row:last-child,
+  .summary-line:last-child {
+    border-bottom: 0;
+  }
+
+  .receipt-rate-row span,
+  .summary-line span {
+    font-weight: 800;
+    color: #290087;
+  }
+
+  .receipt-rate-row strong,
+  .summary-line strong {
+    text-align: right;
+    font-weight: 900;
+    color: #a330a5;
+  }
+
+  .receipt-step-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 0.65rem;
+  }
+
+  .receipt-step-row p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    line-height: 1.35;
+    color: rgba(41, 0, 135, 0.72);
+  }
+
+  .receipt-step-num {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: #a330a5;
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 900;
+  }
+
+  .receipt-barcode {
+    flex: 0 0 auto;
+    padding: 14px 24px 20px;
+    border-top: 1px solid rgba(248, 250, 240, 0.13);
+    text-align: center;
+    background: #290087;
+  }
+
+  .receipt-barcode-bars {
+    min-height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3px;
+    margin-bottom: 8px;
+  }
+
+  .receipt-barcode-bars span {
+    display: inline-block;
+    width: 2px;
+    border-radius: 1px;
+    background: rgba(248, 250, 240, 0.48);
+  }
+
+  .receipt-barcode-text {
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: rgba(248, 250, 240, 0.38);
+  }
+
+  @media (max-width: 900px) {
+    .commission-modal {
+      width: min(620px, 94vw);
+      height: min(92dvh, 860px);
+      max-height: 92dvh;
+    }
+
+    .commission-modal-inner {
+      grid-template-columns: 1fr;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .commission-modal-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .modal-close-btn {
+      top: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .cm-form-panel {
+      overflow: visible;
+      padding: 42px 28px 34px;
+    }
+
+    .cm-row {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .cm-receipt-content {
+      padding: 38px 24px 24px;
+    }
   }
 </style>
