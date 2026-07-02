@@ -139,3 +139,13 @@ body.modal-open .site-shell {
     width: 100%;
   }
 }
+
+/* Hide scrollbar globally while keeping scrolling functionality */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}

@@ -68,6 +68,8 @@ const works = [
     src="/images/patterns/plaid-flower-strip.png"
     alt=""
     aria-hidden="true"
+    loading="lazy"
+    decoding="async"
   />
 
   <div class="works-inner">
@@ -75,6 +77,8 @@ const works = [
       class="works-title"
       src="/images/portfolio/previous-works-title.svg"
       alt="Previous Works"
+      loading="lazy"
+      decoding="async"
     />
 
     <div class="polaroid-scroller" aria-label="Previous works carousel">
@@ -82,7 +86,7 @@ const works = [
         works.map((work, index) => (
           <article class={`polaroid tilt-${(index % 4) + 1}`}>
             <div class="polaroid-art">
-              <img src={work.image} alt={work.title} />
+              <img src={work.image} alt={work.title} loading="lazy" decoding="async" />
               <div class="polaroid-overlay" />
             </div>
 
